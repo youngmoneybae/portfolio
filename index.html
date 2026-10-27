@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Сайты для фотографов — примеры</title>
+<title>Примеры сайтов — Никита</title>
 <meta name="description" content="Примеры сайтов для фотографов и видеографов: свадебный и портретный.">
 <meta property="og:title" content="Сайты для фотографов — примеры">
 <meta property="og:description" content="Два демо-сайта: свадебный фотограф и видеограф, портретный фотограф с калькулятором цены.">
@@ -25,18 +25,21 @@ a.card div{padding:20px 22px 24px}
 a.card h2{font:800 22px/1.15 'Unbounded',system-ui,sans-serif;margin:0 0 8px}
 a.card p{margin:0;color:var(--muted);font-size:15px}
 a.card span{display:inline-block;margin-top:14px;font-weight:700}
-@media (max-width:720px){.grid{grid-template-columns:1fr}}
+a.card.wide{grid-column:1/-1}
+a.card.wide img{aspect-ratio:21/9}
+@media (max-width:720px){.grid{grid-template-columns:1fr}a.card.wide img{aspect-ratio:16/10}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Сайты для фотографов</h1>
-  <p class="lead">Четыре примера сайтов в разных стилях, которые я делаю для фотографов и видеографов. Откройте и полистайте, всё работает на телефоне.</p>
+  <h1>Примеры сайтов</h1>
+  <p class="lead">Примеры сайтов, которые я делаю для фотографов, тренеров и экспертов. Откройте и полистайте, всё работает на телефоне.</p>
   <div class="grid">
     <a class="card" href="wedding/"><img src="wedding/img/01.jpg" alt="Свадебный сайт"><div><h2>Свадебный фотограф и видеограф</h2><p>Кинематографичный стиль, портфолио, блок свадебного фильма, тарифы и календарь свободных дат.</p><span>Открыть пример →</span></div></a>
     <a class="card" href="portrait/"><img src="portrait/img/08.jpg" alt="Портретный сайт"><div><h2>Портретный фотограф</h2><p>Яркий стиль, форматы съёмок, портфолио с фильтрами и онлайн-калькулятор стоимости.</p><span>Открыть пример →</span></div></a>
     <a class="card" href="editorial/"><img src="editorial/img/01.jpg" alt="Журнальный сайт" style="object-position:50% 30%"><div><h2>Fashion-фотограф · журнал</h2><p>Сайт как глянцевый журнал: обложка, содержание, съёмки-развороты с кредитами и прайс-лист.</p><span>Открыть пример →</span></div></a>
     <a class="card" href="bw/"><img src="bw/img/01.jpg" alt="Чёрно-белый сайт" style="object-position:50% 25%"><div><h2>Портрет · чёрно-белый минимализм</h2><p>Строгий тёмный сайт: серии с превью при наведении, листаемая плёнка кадров, лаконичный прайс.</p><span>Открыть пример →</span></div></a>
+    <a class="card wide" href="fitness/"><img src="fitness/img/09.jpg" alt="Сайт фитнес-тренера" style="object-position:50% 25%"><div><h2>Фитнес-тренер для девушек</h2><p>Тёплый светлый стиль: онлайн и зал, тарифы с переключателем, слайдер «до и после», запись на пробную.</p><span>Открыть пример →</span></div></a>
   </div>
 </div>
 </body>
