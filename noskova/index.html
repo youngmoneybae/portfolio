@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Ольга Носкова, онлайн-тренер</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600&display=swap">
+<style>
+/* Layout: one clear promise up top, then the 8-week path as the signature block, what's inside, formats, questions, one action: write «ХОЧУ» */
+:root{
+  --bg:#f5f6f1; --surface:#ffffff; --fg:#17211c; --muted:#5f6b64; --line:#dde2da;
+  --accent:#1e6a50; --accent-ink:#ffffff; --warm:#f3c79a; --warm-ink:#3b2412; --soft:#e6efe8;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111613; --surface:#18201b; --fg:#e9efe9; --muted:#9faba3; --line:#2a342e;
+  --accent:#6fd0a6; --accent-ink:#0f1a14; --warm:#e8b07a; --warm-ink:#2a170a; --soft:#1d2a23; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111613; --surface:#18201b; --fg:#e9efe9; --muted:#9faba3; --line:#2a342e;
+  --accent:#6fd0a6; --accent-ink:#0f1a14; --warm:#e8b07a; --warm-ink:#2a170a; --soft:#1d2a23; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 var(--body)}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.draft{background:var(--soft);color:var(--muted);font-size:13px}
+.draft .wrap{padding-block:9px;display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between}
+.draft b{color:var(--fg);font-weight:600}
+header .wrap{padding-block:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font:700 15px var(--display);letter-spacing:.02em}
+.brand small{display:block;font:500 12px var(--body);color:var(--muted);letter-spacing:.04em}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 16px var(--body);padding:14px 22px;border-radius:14px;background:var(--accent);color:var(--accent-ink);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line);padding:10px 16px;font-size:15px}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.hero .wrap{padding-block:28px 60px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(32px,5vw,58px);line-height:1.08}
+.hero h1 mark{background:var(--warm);color:var(--warm-ink);padding:0 .15em;border-radius:.2em}
+.hero p{color:var(--muted);max-width:44ch;margin:20px 0 28px;font-size:18px}
+.facts{display:grid;gap:12px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:center}
+.fact b{font:700 30px var(--display);color:var(--accent);grid-row:span 2;font-variant-numeric:tabular-nums}
+.fact span{font-weight:600}
+.fact small{color:var(--muted);font-size:14px}
+section .wrap{padding-block:60px}
+section+section .wrap{border-top:1px solid var(--line)}
+.eyebrow{font:600 13px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h2{font-size:clamp(24px,3.2vw,36px);line-height:1.15;margin-bottom:28px}
+.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.wk{padding:20px;border-right:1px solid var(--line);min-width:0}
+.wk:last-child{border-right:0}
+.wk .n{font:500 12px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.wk h3{margin:6px 0 6px;font:700 17px var(--display)}
+.wk p{margin:0;color:var(--muted);font-size:15px}
+.bar{height:6px;border-radius:3px;background:var(--soft);margin-top:14px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0}
+.item h3{margin:0 0 6px;font:600 18px var(--body)}
+.item p{margin:0;color:var(--muted);font-size:15px}
+.no{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.no span{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--accent)}
+.res{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ph{aspect-ratio:4/5;max-width:100%;border-radius:16px;background:repeating-linear-gradient(135deg,var(--soft) 0 12px,var(--surface) 12px 24px);border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:14px;padding:12px}
+.faq{display:grid;gap:10px;max-width:760px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 20px}
+summary{cursor:pointer;font-weight:600}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:6px}
+details p{margin:10px 0 0;color:var(--muted);font-size:15px}
+.final{background:var(--accent);color:var(--accent-ink)}
+.final .wrap{padding-block:60px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px}
+.final h2{margin:0;color:var(--accent-ink)}
+.final p{margin:10px 0 0;opacity:.85;max-width:46ch}
+.final .btn{background:var(--warm);color:var(--warm-ink)}
+footer .wrap{padding-block:22px;color:var(--muted);font-size:13px}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr}
+  .weeks{grid-template-columns:1fr 1fr}
+  .wk:nth-child(2){border-right:0}
+  .wk:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .res{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){
+  .weeks,.grid,.res{grid-template-columns:1fr}
+  .wk{border-right:0;border-bottom:1px solid var(--line)}
+  .wk:last-child{border-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<div class="draft"><div class="wrap"><span><b>Черновик сайта для Ольги.</b> Тексты, цвета и фото меняются под вас.</span><span>Собрал Никита</span></div></div>
+
+<header><div class="wrap">
+  <div class="brand">Ольга Носкова<small>онлайн-тренер · похудение</small></div>
+  <a class="btn ghost" href="https://www.instagram.com/olyaa.noskova/" target="_blank" rel="noopener">Instagram</a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div>
+    <h1>Худеем и едим <mark>что хотим</mark></h1>
+    <p>Больше 13 лет помогаю женщинам прийти к красивой фигуре без голодовок, срывов и выматывающих тренировок. Первый заметный результат уже через 2 месяца.</p>
+    <a class="btn" href="https://www.instagram.com/olyaa.noskova/" target="_blank" rel="noopener">Написать «ХОЧУ»</a>
+  </div>
+  <div class="facts">
+    <div class="fact"><b>13+</b><span>лет опыта</span><small>создаю красивые фигуры</small></div>
+    <div class="fact"><b>2</b><span>месяца до результата</span><small>без голода и стресса</small></div>
+    <div class="fact"><b>0</b><span>запретных продуктов</span><small>учимся есть любимое без вреда</small></div>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <p class="eyebrow">Как проходят 2 месяца</p>
+  <h2>Путь по неделям</h2>
+  <div class="weeks">
+    <div class="wk"><div class="n">Недели 1–2</div><h3>Старт</h3><p>Разбираем ваше питание и режим, без резких ограничений.</p><div class="bar"><i style="width:25%"></i></div></div>
+    <div class="wk"><div class="n">Недели 3–4</div><h3>Привычка</h3><p>Тренировки входят в график, вес начинает уходить.</p><div class="bar"><i style="width:50%"></i></div></div>
+    <div class="wk"><div class="n">Недели 5–6</div><h3>Форма</h3><p>Меняются объёмы, одежда сидит по-другому.</p><div class="bar"><i style="width:75%"></i></div></div>
+    <div class="wk"><div class="n">Недели 7–8</div><h3>Результат</h3><p>Закрепляем, чтобы вес не вернулся после программы.</p><div class="bar"><i style="width:100%"></i></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">Что внутри</p>
+  <h2>Всё, что нужно, чтобы дойти до конца</h2>
+  <div class="grid">
+    <div class="item"><h3>Питание без запретов</h3><p>Составляем рацион из ваших любимых продуктов, без подсчёта каждой калории до грамма.</p></div>
+    <div class="item"><h3>Тренировки под вас</h3><p>Дома или в зале, с учётом уровня подготовки и свободного времени.</p></div>
+    <div class="item"><h3>Поддержка в чате</h3><p>Отвечаю на вопросы и помогаю, когда хочется всё бросить.</p></div>
+    <div class="item"><h3>Еженедельный разбор</h3><p>Смотрим замеры и корректируем план, чтобы результат не вставал.</p></div>
+  </div>
+  <div class="no"><span>голодовки</span><span>жёсткие диеты</span><span>тренировки до упаду</span><span>чувство вины за десерт</span></div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">Результаты</p>
+  <h2>До и после моих подопечных</h2>
+  <div class="res">
+    <div class="ph">Здесь будет фото «до и после»</div>
+    <div class="ph">Здесь будет фото «до и после»</div>
+    <div class="ph">Здесь будет отзыв подопечной</div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">Вопросы</p>
+  <h2>Частые вопросы</h2>
+  <div class="faq">
+    <details><summary>Подойдёт, если я никогда не занималась?</summary><p>Да. Программа начинается с простого и подстраивается под ваш уровень.</p></details>
+    <details><summary>Нужен ли зал?</summary><p>Нет, можно заниматься дома. Если ходите в зал, план составим под него.</p></details>
+    <details><summary>Сколько времени в день это займёт?</summary><p>Тренировки 30–50 минут несколько раз в неделю, остальное встраивается в обычный день.</p></details>
+    <details><summary>Как начать?</summary><p>Напишите «ХОЧУ» в Instagram, я задам пару вопросов и расскажу, с чего начать именно вам.</p></details>
+  </div>
+</div></section>
+
+<div class="final"><div class="wrap">
+  <div><h2>Готовы начать?</h2><p>Напишите «ХОЧУ», и я расскажу, с чего начать именно вам.</p></div>
+  <a class="btn" href="https://www.instagram.com/olyaa.noskova/" target="_blank" rel="noopener">Написать «ХОЧУ»</a>
+</div></div>
+
+<footer><div class="wrap">Ольга Носкова · онлайн-тренер · @olyaa.noskova</div></footer>
+</body>
+</html>
