@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сайты для фотографов — примеры</title>
+<meta name="description" content="Примеры сайтов для фотографов и видеографов: свадебный и портретный.">
+<meta property="og:title" content="Сайты для фотографов — примеры">
+<meta property="og:description" content="Два демо-сайта: свадебный фотограф и видеограф, портретный фотограф с калькулятором цены.">
+<meta property="og:image" content="https://youngmoneybae.github.io/portfolio/wedding/img/01.jpg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Manrope:wght@500;700&display=swap">
+<style>
+:root{--bg:#f4f2ee;--ink:#141414;--muted:#5f5c57;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#121212;--ink:#f4f2ee;--muted:#a9a59e;--card:#1c1c1b;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.6 'Manrope',system-ui,sans-serif;padding:clamp(32px,6vw,72px) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font:800 clamp(34px,6vw,64px)/1 'Unbounded',system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 16px}
+p.lead{color:var(--muted);max-width:52ch;margin:0 0 40px;font-size:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+a.card{display:block;background:var(--card);border-radius:24px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .3s}
+a.card:hover{transform:translateY(-6px)}
+a.card img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+a.card div{padding:20px 22px 24px}
+a.card h2{font:800 22px/1.15 'Unbounded',system-ui,sans-serif;margin:0 0 8px}
+a.card p{margin:0;color:var(--muted);font-size:15px}
+a.card span{display:inline-block;margin-top:14px;font-weight:700}
+@media (max-width:720px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Сайты для фотографов</h1>
+  <p class="lead">Два примера сайтов, которые я делаю для фотографов и видеографов. Откройте и полистайте, всё работает на телефоне.</p>
+  <div class="grid">
+    <a class="card" href="wedding/"><img src="wedding/img/01.jpg" alt="Свадебный сайт"><div><h2>Свадебный фотограф и видеограф</h2><p>Кинематографичный стиль, портфолио, блок свадебного фильма, тарифы и календарь свободных дат.</p><span>Открыть пример →</span></div></a>
+    <a class="card" href="portrait/"><img src="portrait/img/08.jpg" alt="Портретный сайт"><div><h2>Портретный фотограф</h2><p>Яркий стиль, форматы съёмок, портфолио с фильтрами и онлайн-калькулятор стоимости.</p><span>Открыть пример →</span></div></a>
+  </div>
+</div>
+</body>
+</html>

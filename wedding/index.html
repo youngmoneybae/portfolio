@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Свадебный фотограф и видеограф: портфолио, свадебное кино, стоимость и свободные даты.">
+<meta property="og:title" content="Вера Ланская — свадебное фото и кино">
+<meta property="og:description" content="Свадебный фотограф и видеограф: портфолио, свадебное кино, стоимость и свободные даты.">
+<meta property="og:image" content="https://youngmoneybae.github.io/portfolio/wedding/img/01.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+<title>Вера Ланская</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: cinematic full-bleed photo bands alternating with quiet paper sections; a letterboxed "film" band for video; booking calendar as the closing act */
+:root{
+  --paper:#f1f0ea; --paper-2:#e6e5dc; --ink:#1d1f1c; --muted:#61655e; --line:#cfcfc4;
+  --wine:#7a2433; --wine-soft:#ecdcd9; --gold:#b08d57;
+  --film:#0f100e; --film-fg:#efeee8; --film-muted:#9a9b92;
+  --display:'Cormorant Garamond','Cormorant',Georgia,'Times New Roman',serif;
+  --body:'Golos Text','Segoe UI',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  --gutter-l:max(16px,env(safe-area-inset-left,0px)); --gutter-r:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#151613; --paper-2:#1d1f1b; --ink:#ecebe4; --muted:#a2a59b; --line:#33352f;
+  --wine:#d98a95; --wine-soft:#3a2226; --gold:#cfae78; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#151613; --paper-2:#1d1f1b; --ink:#ecebe4; --muted:#a2a59b; --line:#33352f;
+  --wine:#d98a95; --wine-soft:#3a2226; --gold:#cfae78; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{font:500 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-size:clamp(40px,6vw,76px);line-height:.98}
+h2 em,h1 em{font-style:italic;color:var(--wine)}
+p{margin:0}
+.btn{display:inline-flex;align-items:center;gap:10px;font:500 14px/1 var(--body);letter-spacing:.02em;padding:16px 26px;border-radius:999px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;text-decoration:none;transition:background .25s,color .25s,border-color .25s}
+.btn.solid{background:var(--wine);border-color:var(--wine);color:#fff}
+.btn.solid:hover{filter:brightness(1.08)}
+.btn.ghost:hover{background:var(--film-fg);color:var(--film)}
+section{padding-block:clamp(72px,10vw,132px)}
+
+/* NAV */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:50;background:var(--film)}
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:40;color:var(--film-fg);transition:background .35s,color .35s,box-shadow .35s}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.nav.solid{background:color-mix(in srgb,var(--paper) 92%,transparent);color:var(--ink);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.logo{font:italic 500 26px/1 var(--display);text-decoration:none;white-space:nowrap}
+.logo small{font:500 10px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;font-style:normal;opacity:.7;margin-left:10px}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:14px}
+.nav ul a{text-decoration:none;opacity:.85}
+.nav ul a:hover{opacity:1}
+.nav .btn{padding:11px 18px;font-size:13px}
+@media (max-width:900px){.nav ul{display:none}}
+@media (max-width:480px){.logo small{display:none}.nav .btn{padding:10px 14px}}
+
+/* HERO */
+.hero{position:relative;min-height:min(100svh,940px);display:grid;align-items:end;color:var(--film-fg);background:var(--film);overflow:hidden;padding:0}
+.hero .bg{position:absolute;inset:0;background:url(img/01.jpg) center 40%/cover;animation:kb 22s ease-out both;transform-origin:60% 50%}
+@keyframes kb{from{transform:scale(1.14)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,9,.55) 0%,rgba(10,10,9,.05) 35%,rgba(10,10,9,.15) 55%,rgba(10,10,9,.82) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-block:140px clamp(40px,6vw,72px)}
+.hud{position:absolute;z-index:3;top:calc(86px + env(safe-area-inset-top,0px));left:var(--gutter-l);right:var(--gutter-r);display:flex;justify-content:space-between;font:400 11px/1 var(--mono);letter-spacing:.14em;color:rgba(239,238,232,.75);pointer-events:none}
+.rec{display:inline-flex;align-items:center;gap:8px}
+.rec i{width:8px;height:8px;border-radius:50%;background:#e2483d;animation:blink 1.4s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+.hero h1{font-size:clamp(58px,12vw,176px);line-height:.86;font-style:italic;font-weight:400}
+.hero h1 span{display:block;font:500 12px/1.5 var(--mono);letter-spacing:.2em;text-transform:uppercase;margin-bottom:22px;opacity:.85}
+.hero-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;margin-top:36px}
+.hero-row p{max-width:430px;font-size:17px;color:rgba(239,238,232,.86)}
+.hero-row .actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero .btn.solid{background:var(--film-fg);border-color:var(--film-fg);color:var(--film)}
+
+/* FACTS strip */
+.facts{background:var(--film);color:var(--film-fg);padding-block:0;border-top:1px solid #2a2b27}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:26px 18px 28px 0;border-right:1px solid #2a2b27}
+.fact+.fact{padding-left:24px}
+.fact:last-child{border-right:0}
+.fact b{display:block;font:400 clamp(34px,4vw,52px)/1 var(--display);font-variant-numeric:lining-nums}
+.fact span{font-size:13px;color:var(--film-muted)}
+@media (max-width:760px){.facts .wrap{grid-template-columns:1fr 1fr}.fact:nth-child(2){border-right:0}.fact:nth-child(3){padding-left:0}.fact:nth-child(-n+2){border-bottom:1px solid #2a2b27}}
+
+/* INTRO */
+.intro .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,96px);align-items:center}
+.intro .pic{position:relative}
+.intro .pic img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:2px}
+.intro .pic figcaption{position:absolute;left:-1px;bottom:-1px;background:var(--paper);padding:14px 18px 0 0;font:400 11px/1.5 var(--mono);letter-spacing:.1em;color:var(--muted)}
+.intro h2{margin:18px 0 28px}
+.intro p{color:var(--muted);max-width:52ch}
+.intro p+p{margin-top:16px}
+.sign{font:italic 400 34px/1 var(--display);color:var(--ink);margin-top:30px}
+.kit{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.kit span{font:400 12px/1 var(--mono);padding:9px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+@media (max-width:860px){.intro .wrap{grid-template-columns:1fr}.intro .pic{max-width:520px}}
+
+/* PORTFOLIO */
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px}
+.head p{max-width:40ch;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.filters button{font:500 13px/1 var(--body);padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.grid{columns:3 280px;column-gap:14px}
+.grid figure{margin:0 0 14px;break-inside:avoid;position:relative;overflow:hidden;cursor:zoom-in;border-radius:2px;background:var(--paper-2)}
+.grid img{width:100%;height:auto;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.grid figure:hover img{transform:scale(1.04)}
+.grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(10,10,9,.7));color:#f3f2ec;font-size:13px;display:flex;justify-content:space-between;gap:10px;opacity:0;transition:opacity .35s}
+.grid figcaption span{font:400 11px var(--mono);letter-spacing:.08em;opacity:.8}
+.grid figure:hover figcaption,.grid figure:focus-visible figcaption{opacity:1}
+@media (hover:none){.grid figcaption{opacity:1}}
+.grid figure[hidden]{display:none}
+
+/* FILM */
+.film{background:var(--film);color:var(--film-fg)}
+.film .head p{color:var(--film-muted)}
+.film .eyebrow{color:var(--film-muted)}
+.film h2 em{color:var(--gold)}
+.screen{position:relative;aspect-ratio:2.39/1;max-width:100%;overflow:hidden;background:#000;border-radius:2px}
+.screen .shot{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease}
+.screen .shot.on{opacity:1;animation:pan 7s linear both}
+@keyframes pan{from{transform:scale(1.12) translateX(-1.5%)}to{transform:scale(1) translateX(1.5%)}}
+.screen .overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(12px,2.4vw,26px);font:400 clamp(9px,1.1vw,12px)/1 var(--mono);letter-spacing:.14em;color:rgba(255,255,255,.82);background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 30%,transparent 70%,rgba(0,0,0,.45))}
+.screen .overlay>div{display:flex;justify-content:space-between;gap:12px}
+.screen .title{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font:italic 400 clamp(26px,5vw,64px)/1 var(--display);color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.4);pointer-events:none}
+.screen .title small{display:block;font:400 clamp(9px,1vw,12px)/1 var(--mono);letter-spacing:.3em;font-style:normal;margin-top:14px;opacity:.85}
+.bar{height:2px;background:rgba(255,255,255,.18);margin-top:12px;position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;width:0;background:var(--gold)}
+.formats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#2a2b27;margin-top:44px;border:1px solid #2a2b27}
+.formats div{background:var(--film);padding:26px 24px}
+.formats b{display:block;font:400 34px/1 var(--display);margin-bottom:6px}
+.formats span{font:400 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.formats p{color:var(--film-muted);font-size:14px;margin-top:12px}
+@media (max-width:760px){.formats{grid-template-columns:1fr}}
+
+/* STORY */
+.story .wrap{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;align-items:start}
+.story .a{grid-column:1/6;grid-row:1/3}
+.story .b{grid-column:7/13}
+.story .c{grid-column:7/10}
+.story .d{grid-column:10/13}
+.story img{width:100%;object-fit:cover;border-radius:2px}
+.story .a img{aspect-ratio:2/3}
+.story .b img{aspect-ratio:3/2}
+.story .c img,.story .d img{aspect-ratio:4/5}
+.story .text{grid-column:7/13;padding-top:20px}
+.story .text h2{margin:16px 0 20px}
+.story .text p{color:var(--muted);max-width:56ch}
+.story blockquote{margin:26px 0 0;padding-left:20px;border-left:2px solid var(--wine);font:italic 400 24px/1.35 var(--display);color:var(--ink);max-width:40ch}
+@media (max-width:860px){.story .wrap{grid-template-columns:1fr 1fr}.story .a{grid-column:1/3;grid-row:auto}.story .b{grid-column:1/3}.story .c{grid-column:1/2}.story .d{grid-column:2/3}.story .text{grid-column:1/3}.story .a img{aspect-ratio:4/5}}
+
+/* PROCESS */
+.process{background:var(--paper-2)}
+.steps{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--line)}
+.step{padding:22px 18px 8px 0;border-right:1px solid var(--line)}
+.step+.step{padding-left:18px}
+.step:last-child{border-right:0}
+.step .t{font:500 11px/1 var(--mono);letter-spacing:.14em;color:var(--wine)}
+.step h3{font-size:26px;line-height:1.05;margin:16px 0 10px}
+.step p{font-size:14px;color:var(--muted)}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(3,1fr)}.step:nth-child(3){border-right:0}.step:nth-child(4){padding-left:0}.step:nth-child(-n+3){border-bottom:1px solid var(--line);padding-bottom:22px}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}.step,.step+.step{padding:20px 0;border-right:0;border-bottom:1px solid var(--line)}}
+
+/* PRICES */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.plan{border:1px solid var(--line);padding:30px 28px 28px;display:flex;flex-direction:column;gap:18px;border-radius:2px;background:var(--paper)}
+.plan.best{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.plan.best .muted,.plan.best li{color:color-mix(in srgb,var(--paper) 72%,transparent)}
+.plan .tag{align-self:flex-start;font:500 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;padding:7px 10px;border-radius:999px;border:1px solid currentColor}
+.plan h3{font-size:36px;line-height:1}
+.plan .price{font:400 46px/1 var(--display)}
+.plan .price small{font:400 13px var(--body);opacity:.7}
+.plan .muted{color:var(--muted);font-size:14px}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:14px;color:var(--muted)}
+.plan li{display:flex;gap:10px}
+.plan li::before{content:"";flex:none;width:14px;height:1px;background:currentColor;margin-top:11px;opacity:.6}
+.plan .btn{margin-top:auto;justify-content:center}
+.plan.best .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+@media (max-width:900px){.plans{grid-template-columns:1fr}}
+
+/* REVIEWS */
+.reviews{background:var(--film);color:var(--film-fg)}
+.reviews .eyebrow{color:var(--film-muted)}
+.rv{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px)}
+.rv figure{margin:0;display:flex;flex-direction:column;gap:22px}
+.rv blockquote{margin:0;font:italic 400 clamp(22px,2.2vw,28px)/1.3 var(--display)}
+.rv figcaption{font:400 12px/1.5 var(--mono);letter-spacing:.08em;color:var(--film-muted)}
+.demo-tag{display:inline-block;font:500 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:6px 9px;border:1px dashed var(--film-muted);border-radius:4px;color:var(--film-muted);margin-left:12px;vertical-align:middle}
+@media (max-width:860px){.rv{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,96px)}
+details{border-top:1px solid var(--line)}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font:400 24px/1.2 var(--display)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:300 26px/1 var(--body);color:var(--wine);transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 24px;color:var(--muted);max-width:60ch}
+@media (max-width:860px){.faq .wrap{grid-template-columns:1fr}}
+
+/* BOOKING */
+.book{background:var(--paper-2)}
+.book .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,72px);align-items:start}
+.cal-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:26px 0 16px}
+.cal-top b{font:400 34px/1 var(--display);text-transform:capitalize}
+.cal-top div{display:flex;gap:8px}
+.cal-top button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;font-size:18px}
+.cal-top button:disabled{opacity:.35;cursor:default}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal .dow{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;padding:6px 0}
+.cal button{aspect-ratio:1;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:2px;font:500 15px/1 var(--body);font-variant-numeric:tabular-nums;cursor:pointer;position:relative;padding:0}
+.cal button:hover:not(:disabled){border-color:var(--wine)}
+.cal button.busy{background:transparent;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--wine);cursor:not-allowed;border-style:dashed}
+.cal button.few::after{content:"";position:absolute;right:5px;top:5px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.cal button.sel{background:var(--wine);border-color:var(--wine);color:#fff}
+.cal .pad{visibility:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:14px;height:14px;border:1px solid var(--line);border-radius:2px;display:inline-block;background:var(--paper)}
+.legend i.b{background:transparent;border-style:dashed}
+.legend i.f{position:relative}.legend i.f::after{content:"";position:absolute;right:2px;top:2px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+form{background:var(--paper);border:1px solid var(--line);padding:clamp(22px,3vw,34px);display:grid;gap:16px;border-radius:2px}
+form h3{font-size:34px;line-height:1}
+label{display:grid;gap:7px;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+input,select,textarea{font:400 16px/1.4 var(--body);color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);padding:10px 0;border-radius:0;width:100%;text-transform:none;letter-spacing:0}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--wine)}
+textarea{resize:vertical;min-height:70px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form .btn{justify-content:center;margin-top:6px}
+.ok{display:grid;gap:12px;text-align:left}
+.ok h3{font-size:40px}
+.ok p{color:var(--muted)}
+@media (max-width:900px){.book .wrap{grid-template-columns:1fr}}
+@media (max-width:420px){.two{grid-template-columns:1fr}.cal{gap:4px}.cal button{font-size:13px}}
+
+/* FOOTER */
+footer{background:var(--film);color:var(--film-fg);padding-block:64px 36px}
+footer .big{font:italic 400 clamp(48px,10vw,140px)/.9 var(--display)}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;margin-top:44px;padding-top:24px;border-top:1px solid #2a2b27;font-size:14px;color:var(--film-muted)}
+footer .row a{text-decoration:none;color:var(--film-fg)}
+footer .soc{display:flex;gap:20px}
+.demo-note{margin-top:28px;font:400 11px/1.6 var(--mono);letter-spacing:.06em;color:#6f7068}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(8,8,7,.94);display:grid;place-items:center;padding:calc(56px + env(safe-area-inset-top,0px)) max(56px,env(safe-area-inset-right,0px)) calc(56px + env(safe-area-inset-bottom,0px)) max(56px,env(safe-area-inset-left,0px))}
+.lb[hidden],.grid figure[hidden]{display:none!important}
+.lb img{max-height:100%;max-width:100%;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lb button{position:absolute;background:none;border:0;color:#eee;cursor:pointer;font:300 34px/1 var(--body);width:52px;height:52px}
+.lb .x{top:calc(10px + env(safe-area-inset-top,0px));right:max(10px,env(safe-area-inset-right,0px))}
+.lb .p{left:max(4px,env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb .n{right:max(4px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+.lb .cnt{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;font:400 11px var(--mono);letter-spacing:.16em;color:#aaa}
+@media (max-width:600px){.lb{padding-left:var(--gutter-l);padding-right:var(--gutter-r)}.lb .p,.lb .n{top:auto;bottom:calc(6px + env(safe-area-inset-bottom,0px));transform:none}}
+
+/* reveal: visible at rest, gentle lift when scrolled in */
+.rv-in{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv-in.pre{transform:translateY(24px)}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Вера Ланская<small>фото · кино</small></a>
+    <ul>
+      <li><a href="#works">Работы</a></li>
+      <li><a href="#film">Видео</a></li>
+      <li><a href="#process">Как снимаем</a></li>
+      <li><a href="#prices">Стоимость</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+    </ul>
+    <a class="btn" href="#book">Проверить дату</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Вера Ланская, свадебный фотограф и видеограф">
+    <div class="bg" role="img" aria-label="Жених и невеста с букетом в контровом свете"></div>
+    <div class="hud" aria-hidden="true"><span class="rec"><i></i>REC</span><span id="tc">00:00:00:00</span><span>4K · 24 FPS</span></div>
+    <div class="wrap">
+      <h1><span>Свадебный фотограф и видеограф · Москва и вся Россия</span>Вера <em style="color:inherit">Ланская</em></h1>
+      <div class="hero-row">
+        <p>Снимаю свадьбы как кино: живые эмоции без постановки и фильм, который захочется пересматривать через двадцать лет.</p>
+        <div class="actions">
+          <a class="btn solid" href="#book">Проверить свободную дату</a>
+          <a class="btn ghost" href="#works">Смотреть работы</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="facts" aria-label="Цифры">
+    <div class="wrap">
+      <div class="fact"><b>214</b><span>свадеб снято с 2017 года</span></div>
+      <div class="fact"><b>72 ч</b><span>первые 50 кадров после свадьбы</span></div>
+      <div class="fact"><b>600+</b><span>готовых фото с одного дня</span></div>
+      <div class="fact"><b>11</b><span>стран, где мы снимали</span></div>
+    </div>
+  </div>
+
+  <section class="intro">
+    <div class="wrap">
+      <div class="rv-in">
+        <div class="eyebrow">Обо мне</div>
+        <h2>Я не прошу вас <em>позировать</em></h2>
+        <p>Меня зовут Вера. Девять лет я снимаю свадьбы вместе с мужем Львом: я отвечаю за фото, он за кино. Мы работаем тихо, почти незаметно, и ловим то, что вы сами пропустите в суете дня: как папа поправляет очки перед выходом, как подружка плачет на клятвах.</p>
+        <p>До свадьбы мы встречаемся, пьём кофе и вместе собираем тайминг. В день съёмки вы просто живёте, а за кадр отвечаем мы.</p>
+        <div class="kit" aria-label="Техника">
+          <span>Sony A7 IV × 2</span><span>35 mm f/1.4</span><span>85 mm f/1.8</span><span>DJI Mini 4 Pro</span><span>Цвет в Lightroom + DaVinci</span>
+        </div>
+        <div class="sign">Вера и Лев</div>
+      </div>
+      <figure class="pic rv-in" style="margin:0">
+        <img src="img/14.jpg" alt="Фотограф с камерой на фоне заката" loading="lazy" width="1400" height="1750">
+        <figcaption>ЛЕВ НА СЪЁМКЕ · КРЫМ, 2025</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="works" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="eyebrow">Портфолио</div><h2 style="margin-top:16px">Работы <em>последнего</em> сезона</h2></div>
+        <p>Часть кадров из свадеб и love story 2025 года. Нажмите на фото, чтобы открыть его крупно.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Фильтр портфолио">
+        <button type="button" data-f="all" aria-pressed="true">Все</button>
+        <button type="button" data-f="w" aria-pressed="false">Свадьбы</button>
+        <button type="button" data-f="l" aria-pressed="false">Love story</button>
+        <button type="button" data-f="d" aria-pressed="false">Детали</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="film" id="film">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="eyebrow">Свадебное кино</div><h2 style="margin-top:16px">Фильм, а не <em>запись</em> дня</h2></div>
+        <p>Лев снимает в широком кинокадре 2.39:1, пишет живой звук клятв и речей и собирает фильм под вашу музыку.</p>
+      </div>
+      <div class="screen" id="screen" aria-label="Тизер свадебного фильма, слайд-шоу">
+        <div class="overlay" aria-hidden="true">
+          <div><span class="rec"><i></i>PLAY</span><span>АНЯ + ДИМА · ТИЗЕР</span></div>
+          <div><span id="ftc">00:00</span><span>01:00</span></div>
+        </div>
+        <div class="title">Аня и Дима<small>АБРАУ-ДЮРСО · СЕНТЯБРЬ 2025</small></div>
+      </div>
+      <div class="bar" aria-hidden="true"><i id="fbar"></i></div>
+      <div class="formats">
+        <div><span>Тизер</span><b>1 минута</b><p>Ролик для соцсетей, готов через 7 дней после свадьбы.</p></div>
+        <div><span>Фильм</span><b>15–20 минут</b><p>История дня со звуком клятв и речей близких. Готов за 45 дней.</p></div>
+        <div><span>Бонус</span><b>Съёмка с дрона</b><p>Общие планы площадки и прогулки, если погода и место позволяют.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="wrap">
+      <figure class="a" style="margin:0"><img src="img/05.jpg" alt="Пара целуется под фатой на закате" loading="lazy"></figure>
+      <figure class="b" style="margin:0"><img src="img/03.jpg" alt="Жених и невеста идут по виноградникам" loading="lazy"></figure>
+      <figure class="c" style="margin:0"><img src="img/12.jpg" alt="Туфли невесты и букет" loading="lazy" style="aspect-ratio:4/5"></figure>
+      <figure class="d" style="margin:0"><img src="img/11.jpg" alt="Обручальные кольца на приглашении" loading="lazy"></figure>
+      <div class="text rv-in">
+        <div class="eyebrow">История одной свадьбы</div>
+        <h2>Сентябрь <em>в виноградниках</em></h2>
+        <p>Аня и Дима расписались вдвоём и пригласили 40 гостей на ужин среди лоз. Мы начали съёмку утром со сборов, поймали закат в виноградниках и закончили бенгальскими огнями в 23:40. За 14 часов получилось 740 фото и 18-минутный фильм.</p>
+        <blockquote>Лучший кадр дня случился, когда пошёл дождь и все побежали под один зонт.</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="eyebrow">Как мы работаем</div><h2 style="margin-top:16px">От заявки до <em>альбома</em></h2></div>
+        <p>Шесть шагов, после которых у вас на руках фото, фильм и спокойствие за главный день.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="t">ДЕНЬ 0</div><h3>Заявка</h3><p>Проверяем дату и бронируем её за вами за 30% предоплаты.</p></div>
+        <div class="step"><div class="t">ЗА 1 МЕС.</div><h3>Встреча</h3><p>Знакомимся, обсуждаем стиль, площадки и пожелания.</p></div>
+        <div class="step"><div class="t">ЗА 2 НЕД.</div><h3>Тайминг</h3><p>Вместе собираем план дня с запасом на свет и дорогу.</p></div>
+        <div class="step"><div class="t">ДЕНЬ X</div><h3>Съёмка</h3><p>Работаем вдвоём: фото и видео, без лишних указаний.</p></div>
+        <div class="step"><div class="t">+3 ДНЯ</div><h3>Превью</h3><p>50 лучших кадров, чтобы поделиться с близкими.</p></div>
+        <div class="step"><div class="t">+30–45 ДНЕЙ</div><h3>Готово</h3><p>Все фото в онлайн-галерее и фильм в 4K.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prices">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="eyebrow">Стоимость</div><h2 style="margin-top:16px">Три <em>формата</em> съёмки</h2></div>
+        <p>Цены на сезон 2027. Выезд по Москве и области включён, в другие города обсуждаем отдельно.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <span class="tag">Камерная</span>
+          <h3>Регистрация</h3>
+          <div class="price">35 000 <small>₽ · до 4 часов</small></div>
+          <p class="muted">Для росписи вдвоём или с самыми близкими.</p>
+          <ul><li>Фото: от 250 кадров</li><li>Прогулка после ЗАГСа</li><li>Превью через 3 дня</li><li>Онлайн-галерея на год</li></ul>
+          <a class="btn" href="#book" data-plan="Регистрация">Выбрать</a>
+        </article>
+        <article class="plan best">
+          <span class="tag">Чаще всего выбирают</span>
+          <h3>Фото + кино</h3>
+          <div class="price">95 000 <small>₽ · до 10 часов</small></div>
+          <p class="muted">Весь день от сборов до первого танца, вдвоём с Львом.</p>
+          <ul><li>Фото: от 600 кадров</li><li>Фильм 15–20 минут</li><li>Тизер за 7 дней</li><li>Съёмка с дрона</li><li>Превью через 3 дня</li></ul>
+          <a class="btn" href="#book" data-plan="Фото + кино">Выбрать</a>
+        </article>
+        <article class="plan">
+          <span class="tag">Без ограничений</span>
+          <h3>Полный день</h3>
+          <div class="price">140 000 <small>₽ · до 14 часов</small></div>
+          <p class="muted">Плюс love story за месяц до свадьбы и фотокнига.</p>
+          <ul><li>Всё из «Фото + кино»</li><li>Love story 2 часа</li><li>Фотокнига 30×30, 40 страниц</li><li>Второй фотограф на сборы</li></ul>
+          <a class="btn" href="#book" data-plan="Полный день">Выбрать</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:52px">
+        <div><div class="eyebrow">Отзывы пар <span class="demo-tag">пример блока</span></div><h2 style="margin-top:16px">Что говорят <em style="color:var(--gold)">после</em></h2></div>
+      </div>
+      <div class="rv">
+        <figure><blockquote>Мы смотрели фильм всей семьёй три раза подряд. Бабушка попросила копию на флешке.</blockquote><figcaption>АНЯ И ДИМА · СЕНТЯБРЬ 2025</figcaption></figure>
+        <figure><blockquote>Я боялась камеры, а на фото выгляжу собой. Вера ни разу не сказала «улыбнитесь».</blockquote><figcaption>КАТЯ И ИЛЬЯ · ИЮНЬ 2025</figcaption></figure>
+        <figure><blockquote>Превью пришло на третий день, и мы успели показать его гостям на следующий вечер.</blockquote><figcaption>ОЛЯ И САША · АВГУСТ 2025</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div><div class="eyebrow">Вопросы</div><h2 style="margin-top:16px">Коротко о <em>важном</em></h2></div>
+      <div>
+        <details open><summary>За сколько бронировать дату?</summary><p>Летние субботы разбирают за 8–12 месяцев. Будние дни и осень обычно свободны за 2–3 месяца. Свободные даты видно в календаре ниже.</p></details>
+        <details><summary>Как закрепить дату?</summary><p>Подписываем договор и вносим предоплату 30%. Остаток оплачивается в день свадьбы. Если свадьба переносится, предоплата переходит на новую дату.</p></details>
+        <details><summary>Сколько фото мы получим?</summary><p>С полного дня в среднем 600–800 обработанных кадров. Неудачные дубли и моргания мы отсеиваем сами.</p></details>
+        <details><summary>Отдаёте ли вы исходники?</summary><p>Да, по запросу передаём RAW-файлы всех отобранных кадров бесплатно.</p></details>
+        <details><summary>Работаете в других городах?</summary><p>Да. Мы снимали в 11 странах и десятках городов России. В другие города добавляется дорога и проживание.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Бронирование · сезон 2027</div>
+        <h2 style="margin-top:16px">Ваша дата <em>свободна?</em></h2>
+        <div class="cal-top">
+          <b id="mname">май 2027</b>
+          <div><button type="button" id="prev" aria-label="Предыдущий месяц">←</button><button type="button" id="next" aria-label="Следующий месяц">→</button></div>
+        </div>
+        <div class="cal" id="cal" aria-label="Календарь свободных дат"></div>
+        <div class="legend"><span><i></i>свободно</span><span><i class="f"></i>осталось одно место</span><span><i class="b"></i>занято</span></div>
+      </div>
+      <div id="formbox">
+        <form id="form" novalidate>
+          <h3>Заявка на дату</h3>
+          <label for="f-date">Дата свадьбы<input id="f-date" name="date" placeholder="Выберите дату в календаре" readonly></label>
+          <div class="two">
+            <label for="f-name">Ваши имена<input id="f-name" name="name" placeholder="Аня и Дима" autocomplete="name"></label>
+            <label for="f-city">Город<input id="f-city" name="city" placeholder="Москва"></label>
+          </div>
+          <label for="f-plan">Формат<select id="f-plan" name="plan"><option>Фото + кино</option><option>Регистрация</option><option>Полный день</option><option>Пока не решили</option></select></label>
+          <label for="f-contact">Telegram или телефон<input id="f-contact" name="contact" placeholder="@username" autocomplete="tel"></label>
+          <label for="f-msg">Пара слов о свадьбе<textarea id="f-msg" name="msg" placeholder="Площадка, число гостей, что важно для вас"></textarea></label>
+          <button class="btn solid" type="submit">Отправить заявку</button>
+          <p id="f-err" class="eyebrow" style="color:var(--wine);letter-spacing:.08em;text-transform:none" hidden>Укажите имена и контакт, чтобы мы могли ответить.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big">Давайте снимем<br>вашу историю</div>
+    <div class="row">
+      <span>© 2026 Вера Ланская · свадебное фото и кино</span>
+      <span class="soc"><span>Telegram</span><span>ВКонтакте</span><span>+7 900 000-00-00</span></span>
+    </div>
+    <p class="demo-note">Это демо-сайт: имя, цены, тексты и отзывы придуманы для примера. Фотографии с Unsplash.</p>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Просмотр фото">
+  <img id="lbimg" alt="">
+  <button type="button" class="x" id="lbx" aria-label="Закрыть">×</button>
+  <button type="button" class="p" id="lbp" aria-label="Предыдущее фото">‹</button>
+  <button type="button" class="n" id="lbn" aria-label="Следующее фото">›</button>
+  <div class="cnt" id="lbc"></div>
+</div>
+
+<script>
+(function(){
+  // NAV solid on scroll
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('solid',window.scrollY>window.innerHeight*0.6)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // Hero timecode
+  var tc=document.getElementById('tc'),t0=performance.now();
+  function pad(n){return String(n).padStart(2,'0')}
+  setInterval(function(){var s=(performance.now()-t0)/1000;tc.textContent=pad(Math.floor(s/3600))+':'+pad(Math.floor(s/60)%60)+':'+pad(Math.floor(s)%60)+':'+pad(Math.floor(s*24)%24)},42);
+
+  // Portfolio
+  var P=[
+    ['03','w','Виноградники','Абрау-Дюрсо'],['04','l','Галерея','Турин'],['07','w','У замка','Выборг'],
+    ['11','d','Кольца','Детали'],['10','l','Поле','Подмосковье'],['06','w','Усадьба','Архангельское'],
+    ['09','w','Ветер','Калининград'],['13','d','Сервировка','Детали'],['02','l','Холмы','Крым'],
+    ['05','l','Закат','Алтай'],['12','d','Утро невесты','Детали'],['08','l','Секвойи','Калифорния']
+  ];
+  var grid=document.getElementById('grid'),html='';
+  P.forEach(function(p,i){html+='<figure tabindex="0" data-c="'+p[1]+'" data-i="'+i+'"><img src="img/'+p[0]+'.jpg" alt="'+p[2]+', '+p[3]+'" loading="lazy"><figcaption>'+p[2]+'<span>'+p[3].toUpperCase()+'</span></figcaption></figure>'});
+  grid.innerHTML=html;
+  document.querySelector('.filters').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;var f=b.dataset.f;
+    [].forEach.call(this.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    [].forEach.call(grid.children,function(fig){fig.hidden=!(f==='all'||fig.dataset.c===f)});
+  });
+
+  // Lightbox
+  var lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg'),lbc=document.getElementById('lbc'),cur=0,list=[];
+  function visible(){return [].filter.call(grid.children,function(f){return !f.hidden})}
+  function show(k){list=visible();cur=(k+list.length)%list.length;var im=list[cur].querySelector('img');lbimg.src=im.src;lbimg.alt=im.alt;lbc.textContent=pad(cur+1)+' / '+pad(list.length)}
+  function open(fig){list=visible();show(list.indexOf(fig));lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbx').focus()}
+  function close(){lb.hidden=true;document.body.style.overflow=''}
+  grid.addEventListener('click',function(e){var f=e.target.closest('figure');if(f)open(f)});
+  grid.addEventListener('keydown',function(e){if(e.key==='Enter'){var f=e.target.closest('figure');if(f)open(f)}});
+  document.getElementById('lbx').onclick=close;
+  document.getElementById('lbp').onclick=function(){show(cur-1)};
+  document.getElementById('lbn').onclick=function(){show(cur+1)};
+  lb.addEventListener('click',function(e){if(e.target===lb)close()});
+  document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
+  var sx=0;lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1))});
+
+  // Film teaser slideshow
+  var screen=document.getElementById('screen'),shots=['02','08','03','09','05','06'],els=[];
+  shots.forEach(function(s,i){var d=document.createElement('div');d.className='shot'+(i===0?' on':'');d.style.backgroundImage='url(img/'+s+'.jpg)';screen.insertBefore(d,screen.firstChild);els.push(d)});
+  var k=0,fstart=performance.now(),ftc=document.getElementById('ftc'),fbar=document.getElementById('fbar');
+  setInterval(function(){els[k].classList.remove('on');k=(k+1)%els.length;void els[k].offsetWidth;els[k].classList.add('on')},5200);
+  setInterval(function(){var s=((performance.now()-fstart)/1000)%60;ftc.textContent='00:'+pad(Math.floor(s));fbar.style.width=(s/60*100)+'%'},250);
+
+  // Calendar: May–Sep 2027
+  var months=[4,5,6,7,8],mi=0,Y=2027,sel=null;
+  var MN=['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+  var MG=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  function status(d){
+    var dow=d.getDay(),n=d.getDate()+d.getMonth()*31;
+    if(dow===6) return (n%5===0)?'few':'busy';
+    if(dow===5) return (n%3===0)?'busy':(n%4===0?'few':'free');
+    if(dow===0) return (n%4===0)?'busy':'free';
+    return (n%11===0)?'busy':'free';
+  }
+  function renderCal(){
+    var m=months[mi],first=new Date(Y,m,1),days=new Date(Y,m+1,0).getDate(),off=(first.getDay()+6)%7,h='';
+    ['пн','вт','ср','чт','пт','сб','вс'].forEach(function(x){h+='<div class="dow">'+x+'</div>'});
+    for(var i=0;i<off;i++)h+='<button class="pad" tabindex="-1" aria-hidden="true"></button>';
+    for(var dd=1;dd<=days;dd++){
+      var dt=new Date(Y,m,dd),s=status(dt),key=Y+'-'+m+'-'+dd,lab=dd+' '+MG[m];
+      var cls=(s==='busy'?'busy':s==='few'?'few':'')+(sel===key?' sel':'');
+      h+='<button type="button" class="'+cls+'" data-k="'+key+'" data-l="'+lab+'"'+(s==='busy'?' disabled aria-label="'+lab+', занято"':' aria-label="'+lab+(s==='few'?', осталось одно место':', свободно')+'"')+'>'+dd+'</button>';
+    }
+    document.getElementById('cal').innerHTML=h;
+    document.getElementById('mname').textContent=MN[m]+' '+Y;
+    document.getElementById('prev').disabled=mi===0;
+    document.getElementById('next').disabled=mi===months.length-1;
+  }
+  document.getElementById('prev').onclick=function(){if(mi>0){mi--;renderCal()}};
+  document.getElementById('next').onclick=function(){if(mi<months.length-1){mi++;renderCal()}};
+  document.getElementById('cal').addEventListener('click',function(e){
+    var b=e.target.closest('button[data-k]');if(!b||b.disabled)return;
+    sel=b.dataset.k;document.getElementById('f-date').value=b.dataset.l+' '+Y;renderCal();
+    if(window.innerWidth<900)document.getElementById('formbox').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  renderCal();
+
+  // Plan buttons prefill
+  document.querySelectorAll('[data-plan]').forEach(function(a){a.addEventListener('click',function(){document.getElementById('f-plan').value=a.dataset.plan})});
+
+  // Form
+  document.getElementById('form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('f-name').value.trim(),c=document.getElementById('f-contact').value.trim();
+    if(!name||!c){document.getElementById('f-err').hidden=false;return}
+    var date=document.getElementById('f-date').value||'дату обсудим';
+    var box=document.getElementById('formbox');
+    box.innerHTML='<div class="ok" style="background:var(--paper);border:1px solid var(--line);padding:34px"><div class="eyebrow">Демо-режим</div><h3>Спасибо, '+name.replace(/[<>&"]/g,'')+'!</h3><p>Так выглядит экран после отправки заявки на '+date.replace(/[<>&"]/g,'')+'. На настоящем сайте заявка сразу уходит фотографу в Telegram, и он отвечает в течение часа.</p></div>';
+  });
+
+  // Gentle reveal (content visible at rest; only lifts once)
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.remove('pre');io.unobserve(en.target)}})},{threshold:.12});
+    document.querySelectorAll('.rv-in').forEach(function(el){var r=el.getBoundingClientRect();if(r.top>window.innerHeight){el.classList.add('pre');io.observe(el)}});
+  }
+})();
+</script>
+
+</body>
+</html>
