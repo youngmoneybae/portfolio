@@ -111,15 +111,16 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
 .filters button{font:500 13px/1 var(--body);padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.grid{columns:3 280px;column-gap:14px}
-.grid figure{margin:0 0 14px;break-inside:avoid;position:relative;overflow:hidden;cursor:zoom-in;border-radius:2px;background:var(--paper-2)}
-.grid img{width:100%;height:auto;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.grid{display:flex;flex-direction:column;gap:12px}
+.grid .row{display:flex;gap:12px}
+.grid figure{margin:0;position:relative;overflow:hidden;cursor:zoom-in;border-radius:2px;background:var(--paper-2);flex:var(--r) 1 0;min-width:0}
+.grid img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
 .grid figure:hover img{transform:scale(1.04)}
 .grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(10,10,9,.7));color:#f3f2ec;font-size:13px;display:flex;justify-content:space-between;gap:10px;opacity:0;transition:opacity .35s}
 .grid figcaption span{font:400 11px var(--mono);letter-spacing:.08em;opacity:.8}
 .grid figure:hover figcaption,.grid figure:focus-visible figcaption{opacity:1}
-@media (hover:none){.grid figcaption{opacity:1}}
-.grid figure[hidden]{display:none}
+@media (hover:none){.grid figcaption{opacity:1;padding:28px 10px 8px;font-size:12px}.grid figcaption span{display:none}}
+@media (max-width:600px){.grid,.grid .row{gap:8px}}
 
 /* FILM */
 .film{background:var(--film);color:var(--film-fg)}
@@ -127,9 +128,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .film .eyebrow{color:var(--film-muted)}
 .film h2 em{color:var(--gold)}
 .screen{position:relative;aspect-ratio:2.39/1;max-width:100%;overflow:hidden;background:#000;border-radius:2px}
-.screen .shot{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease}
-.screen .shot.on{opacity:1;animation:pan 7s linear both}
-@keyframes pan{from{transform:scale(1.12) translateX(-1.5%)}to{transform:scale(1) translateX(1.5%)}}
+.screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.screen .title{transition:opacity 1.2s ease}
+.screen.playing .title{opacity:0}
+.screen .toggle{position:absolute;right:clamp(12px,2.4vw,26px);bottom:clamp(30px,5vw,56px);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(0,0,0,.35);color:#fff;cursor:pointer;font:500 13px/1 var(--mono);backdrop-filter:blur(4px)}
 .screen .overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(12px,2.4vw,26px);font:400 clamp(9px,1.1vw,12px)/1 var(--mono);letter-spacing:.14em;color:rgba(255,255,255,.82);background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 30%,transparent 70%,rgba(0,0,0,.45))}
 .screen .overlay>div{display:flex;justify-content:space-between;gap:12px}
 .screen .title{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font:italic 400 clamp(26px,5vw,64px)/1 var(--display);color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.4);pointer-events:none}
@@ -323,8 +325,8 @@ footer .soc{display:flex;gap:20px}
         <div class="sign">Вера и Лев</div>
       </div>
       <figure class="pic rv-in" style="margin:0">
-        <img src="img/14.jpg" alt="Фотограф с камерой на фоне заката" loading="lazy" width="1400" height="1750">
-        <figcaption>ЛЕВ НА СЪЁМКЕ · КРЫМ, 2025</figcaption>
+        <img src="img/15.jpg" alt="Фотограф снимает жениха и невесту в парке" loading="lazy" width="1400" height="929" style="object-position:56% 50%">
+        <figcaption>ВЕРА НА СЪЁМКЕ · ПОДМОСКОВЬЕ, 2025</figcaption>
       </figure>
     </div>
   </section>
@@ -351,16 +353,18 @@ footer .soc{display:flex;gap:20px}
         <div><div class="eyebrow">Свадебное кино</div><h2 style="margin-top:16px">Фильм, а не <em>запись</em> дня</h2></div>
         <p>Лев снимает в широком кинокадре 2.39:1, пишет живой звук клятв и речей и собирает фильм под вашу музыку.</p>
       </div>
-      <div class="screen" id="screen" aria-label="Тизер свадебного фильма, слайд-шоу">
+      <div class="screen" id="screen">
+        <video id="teaser" src="img/film.mp4" poster="img/film-poster.jpg" muted loop playsinline preload="metadata" aria-label="Тизер свадебного фильма Ани и Димы"></video>
         <div class="overlay" aria-hidden="true">
           <div><span class="rec"><i></i>PLAY</span><span>АНЯ + ДИМА · ТИЗЕР</span></div>
-          <div><span id="ftc">00:00</span><span>01:00</span></div>
+          <div><span id="ftc">00:00</span><span id="fdur">00:30</span></div>
         </div>
         <div class="title">Аня и Дима<small>АБРАУ-ДЮРСО · СЕНТЯБРЬ 2025</small></div>
+        <button type="button" class="toggle" id="ftoggle" aria-label="Пауза">❚❚</button>
       </div>
       <div class="bar" aria-hidden="true"><i id="fbar"></i></div>
       <div class="formats">
-        <div><span>Тизер</span><b>1 минута</b><p>Ролик для соцсетей, готов через 7 дней после свадьбы.</p></div>
+        <div><span>Тизер</span><b>30–60 секунд</b><p>Ролик для соцсетей, готов через 7 дней после свадьбы.</p></div>
         <div><span>Фильм</span><b>15–20 минут</b><p>История дня со звуком клятв и речей близких. Готов за 45 дней.</p></div>
         <div><span>Бонус</span><b>Съёмка с дрона</b><p>Общие планы площадки и прогулки, если погода и место позволяют.</p></div>
       </div>
@@ -524,23 +528,37 @@ footer .soc{display:flex;gap:20px}
 
   // Portfolio
   var P=[
-    ['03','w','Виноградники','Абрау-Дюрсо'],['04','l','Галерея','Турин'],['07','w','У замка','Выборг'],
-    ['11','d','Кольца','Детали'],['10','l','Поле','Подмосковье'],['06','w','Усадьба','Архангельское'],
-    ['09','w','Ветер','Калининград'],['13','d','Сервировка','Детали'],['02','l','Холмы','Крым'],
-    ['05','l','Закат','Алтай'],['12','d','Утро невесты','Детали'],['08','l','Секвойи','Калифорния']
+    ['03','w','Виноградники','Абрау-Дюрсо',1.5],['04','l','Галерея','Турин',.665],['07','w','У замка','Выборг',.661],
+    ['11','d','Кольца','Детали',.8],['10','l','Поле','Подмосковье',.71],['06','w','Усадьба','Архангельское',.75],
+    ['09','w','Ветер','Калининград',1.714],['13','d','Сервировка','Детали',.751],['02','l','Холмы','Крым',1.5],
+    ['05','l','Закат','Алтай',.667],['12','d','Утро невесты','Детали',1.5],['08','l','Секвойи','Калифорния',1.5]
   ];
-  var grid=document.getElementById('grid'),html='';
-  P.forEach(function(p,i){html+='<figure tabindex="0" data-c="'+p[1]+'" data-i="'+i+'"><img src="img/'+p[0]+'.jpg" alt="'+p[2]+', '+p[3]+'" loading="lazy"><figcaption>'+p[2]+'<span>'+p[3].toUpperCase()+'</span></figcaption></figure>'});
-  grid.innerHTML=html;
+  var grid=document.getElementById('grid'),filter='all';
+  function layout(){
+    var W=grid.clientWidth;if(!W)return;
+    var gap=W<600?8:12,th=W<600?190:W<1000?260:320;
+    var items=P.filter(function(p){return filter==='all'||p[1]===filter});
+    var rows=[],cur=[],sum=0;
+    items.forEach(function(p){cur.push(p);sum+=p[4];if(sum*th+gap*(cur.length-1)>=W){rows.push(cur);cur=[];sum=0}});
+    if(cur.length){if(rows.length&&(cur.length<2||sum*th+gap*(cur.length-1)<W*0.6)){rows[rows.length-1]=rows[rows.length-1].concat(cur)}else rows.push(cur)}
+    var maxRow=W<600?2:4,fixed=[];
+    rows.forEach(function(r){while(r.length>maxRow+1){fixed.push(r.splice(0,maxRow))}fixed.push(r)});
+    grid.innerHTML=fixed.map(function(r){
+      var s=r.reduce(function(a,p){return a+p[4]},0),h=(W-gap*(r.length-1))/s;
+      return '<div class="row" style="height:'+h.toFixed(1)+'px">'+r.map(function(p){var i=P.indexOf(p);return '<figure tabindex="0" data-i="'+i+'" style="--r:'+p[4]+'"><img src="img/'+p[0]+'.jpg" alt="'+p[2]+', '+p[3]+'" loading="lazy"><figcaption>'+p[2]+'<span>'+p[3].toUpperCase()+'</span></figcaption></figure>'}).join('')+'</div>';
+    }).join('');
+  }
+  layout();
+  var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(layout,120)});
   document.querySelector('.filters').addEventListener('click',function(e){
-    var b=e.target.closest('button');if(!b)return;var f=b.dataset.f;
+    var b=e.target.closest('button');if(!b)return;filter=b.dataset.f;
     [].forEach.call(this.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
-    [].forEach.call(grid.children,function(fig){fig.hidden=!(f==='all'||fig.dataset.c===f)});
+    layout();
   });
 
   // Lightbox
   var lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg'),lbc=document.getElementById('lbc'),cur=0,list=[];
-  function visible(){return [].filter.call(grid.children,function(f){return !f.hidden})}
+  function visible(){return [].slice.call(grid.querySelectorAll('figure'))}
   function show(k){list=visible();cur=(k+list.length)%list.length;var im=list[cur].querySelector('img');lbimg.src=im.src;lbimg.alt=im.alt;lbc.textContent=pad(cur+1)+' / '+pad(list.length)}
   function open(fig){list=visible();show(list.indexOf(fig));lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbx').focus()}
   function close(){lb.hidden=true;document.body.style.overflow=''}
@@ -554,12 +572,19 @@ footer .soc{display:flex;gap:20px}
   var sx=0;lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
   lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1))});
 
-  // Film teaser slideshow
-  var screen=document.getElementById('screen'),shots=['02','08','03','09','05','06'],els=[];
-  shots.forEach(function(s,i){var d=document.createElement('div');d.className='shot'+(i===0?' on':'');d.style.backgroundImage='url(img/'+s+'.jpg)';screen.insertBefore(d,screen.firstChild);els.push(d)});
-  var k=0,fstart=performance.now(),ftc=document.getElementById('ftc'),fbar=document.getElementById('fbar');
-  setInterval(function(){els[k].classList.remove('on');k=(k+1)%els.length;void els[k].offsetWidth;els[k].classList.add('on')},5200);
-  setInterval(function(){var s=((performance.now()-fstart)/1000)%60;ftc.textContent='00:'+pad(Math.floor(s));fbar.style.width=(s/60*100)+'%'},250);
+  // Film teaser video
+  var screen=document.getElementById('screen'),film=document.getElementById('teaser'),ftc=document.getElementById('ftc'),fbar=document.getElementById('fbar'),tg=document.getElementById('ftoggle');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function mmss(t){return pad(Math.floor(t/60))+':'+pad(Math.floor(t%60))}
+  film.addEventListener('loadedmetadata',function(){document.getElementById('fdur').textContent=mmss(film.duration)});
+  film.addEventListener('timeupdate',function(){ftc.textContent=mmss(film.currentTime);if(film.duration)fbar.style.width=(film.currentTime/film.duration*100)+'%'});
+  film.addEventListener('play',function(){screen.classList.add('playing');tg.textContent='❚❚';tg.setAttribute('aria-label','Пауза')});
+  film.addEventListener('pause',function(){screen.classList.remove('playing');tg.textContent='▶';tg.setAttribute('aria-label','Смотреть тизер')});
+  tg.addEventListener('click',function(){film.paused?film.play():film.pause()});
+  if(reduce){tg.textContent='▶';tg.setAttribute('aria-label','Смотреть тизер')}
+  else if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var p=film.play();if(p&&p.catch)p.catch(function(){tg.textContent='▶'})}else film.pause()})},{threshold:.35}).observe(screen);
+  } else {film.play()}
 
   // Calendar: May–Sep 2027
   var months=[4,5,6,7,8],mi=0,Y=2027,sel=null;
