@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Евгения Зимина, фотограф</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: contact-sheet portfolio. Hero as a film strip, then services as price-list rows, package, photo days, how it goes, contact */
+:root{
+  --bg:#f3f1f4; --surface:#ffffff; --fg:#1d1a22; --muted:#6c6773; --line:#ddd7df;
+  --accent:#6d3d5d; --accent-ink:#ffffff; --soft:#ebe2e9;
+  --f1a:#c9b6c4; --f1b:#8d7287; --f2a:#d8cfc4; --f2b:#9b8b79; --f3a:#b9c3c9; --f3b:#6f7f88;
+  --display:"Prata",Georgia,"Times New Roman",serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#16141a; --surface:#1f1c24; --fg:#efeaf1; --muted:#a59fac; --line:#322d38;
+  --accent:#d9a0c6; --accent-ink:#1d1a22; --soft:#2a2330;
+  --f1a:#5a4656; --f1b:#2e2430; --f2a:#5b5145; --f2b:#2f2a24; --f3a:#46535b; --f3b:#232b30; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#16141a; --surface:#1f1c24; --fg:#efeaf1; --muted:#a59fac; --line:#322d38;
+  --accent:#d9a0c6; --accent-ink:#1d1a22; --soft:#2a2330;
+  --f1a:#5a4656; --f1b:#2e2430; --f2a:#5b5145; --f2b:#2f2a24; --f3a:#46535b; --f3b:#232b30; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--body)}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.draft{background:var(--soft);color:var(--muted);font-size:13px}
+.draft .wrap{padding-block:9px;display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between}
+.draft b{color:var(--fg);font-weight:600}
+header .wrap{padding-block:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font:20px var(--display);letter-spacing:.01em}
+.brand small{display:block;font:500 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--body);padding:12px 20px;border-radius:999px;background:var(--accent);color:var(--accent-ink);text-decoration:none;border:0}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0}
+.hero .wrap{padding-block:24px 56px;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(36px,5.6vw,64px);line-height:1.08}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{color:var(--muted);max-width:44ch;margin:18px 0 26px;font-size:17px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;background:var(--fg);padding:14px 10px;border-radius:6px;position:relative}
+.strip::before,.strip::after{content:"";position:absolute;left:10px;right:10px;height:6px;background:repeating-linear-gradient(90deg,var(--bg) 0 8px,transparent 8px 18px);opacity:.55}
+.strip::before{top:4px}.strip::after{bottom:4px}
+.frame{aspect-ratio:3/4;max-width:100%;border-radius:2px;display:flex;align-items:flex-end;padding:8px;font-size:11px;color:#fff;letter-spacing:.04em}
+.fa{background:linear-gradient(160deg,var(--f1a),var(--f1b))}
+.fb{background:linear-gradient(160deg,var(--f2a),var(--f2b))}
+.fc{background:linear-gradient(160deg,var(--f3a),var(--f3b))}
+.frame span{background:rgba(0,0,0,.35);padding:2px 6px;border-radius:3px}
+section .wrap{padding-block:56px}
+section+section .wrap{border-top:1px solid var(--line)}
+.eyebrow{font:600 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h2{font-size:clamp(28px,3.6vw,40px);line-height:1.15;margin-bottom:28px}
+.list{display:grid;gap:0}
+.row{display:grid;grid-template-columns:1fr auto;gap:6px 24px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.row h3{margin:0;font:600 18px var(--body)}
+.row p{margin:4px 0 0;color:var(--muted);font-size:15px;max-width:58ch}
+.row .t{color:var(--muted);font-size:14px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pack{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.pack ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.pack li{display:grid;grid-template-columns:22px 1fr;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.pack li b{display:block}
+.pack li span{color:var(--muted);font-size:14px}
+.tick{color:var(--accent);font-weight:700}
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.day{border:1px dashed var(--line);border-radius:10px;padding:18px;background:var(--surface);min-width:0}
+.day .d{font:22px var(--display)}
+.day p{margin:6px 0 0;color:var(--muted);font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{counter-increment:s;min-width:0}
+.step::before{content:counter(s);font:30px var(--display);color:var(--accent);display:block;margin-bottom:6px}
+.step b{display:block;margin-bottom:4px}
+.step p{margin:0;color:var(--muted);font-size:14px}
+.contact{background:var(--fg);color:var(--bg)}
+.contact .wrap{padding-block:56px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
+.contact h2{margin:0;color:var(--bg)}
+.contact p{margin:8px 0 0;opacity:.75}
+.contact .btn{background:var(--bg);color:var(--fg)}
+footer .wrap{padding-block:22px;color:var(--muted);font-size:13px}
+@media (max-width:820px){
+  .hero .wrap,.pack{grid-template-columns:1fr}
+  .days{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){.steps{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="draft"><div class="wrap"><span><b>Черновик сайта для Евгении.</b> Цвета и тексты меняются, вместо плашек будут ваши фотографии.</span><span>Собрал Никита</span></div></div>
+
+<header><div class="wrap">
+  <div class="brand">Евгения Зимина<small>Фотограф · Саратов</small></div>
+  <a class="btn ghost" href="https://www.instagram.com/photo_by_zimina/" target="_blank" rel="noopener">Instagram</a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div>
+    <h1>Снимаю так, чтобы вы <em>узнавали себя</em> на фото</h1>
+    <p>Индивидуальные, семейные и контентные съёмки, уличные и свадебные истории, крещение. Можно прийти с пустыми руками: в съёмке «всё включено» я беру на себя локацию, образы и визаж.</p>
+    <div class="cta">
+      <a class="btn" href="https://www.instagram.com/photo_by_zimina/" target="_blank" rel="noopener">Записаться на съёмку</a>
+      <a class="btn ghost" href="#days">Ближайшие фотодни</a>
+    </div>
+  </div>
+  <div class="strip" aria-label="Место для ваших фотографий">
+    <div class="frame fa"><span>Ваше фото</span></div>
+    <div class="frame fb"><span>Ваше фото</span></div>
+    <div class="frame fc"><span>Ваше фото</span></div>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <p class="eyebrow">Съёмки</p>
+  <h2>С чем можно ко мне прийти</h2>
+  <div class="list">
+    <div class="row"><div><h3>Индивидуальная</h3><p>Для себя, для соцсетей или к дню рождения. Помогу с позами, если вы в первый раз перед камерой.</p></div><div class="t">1–2 часа</div></div>
+    <div class="row"><div><h3>Семейная</h3><p>Спокойная съёмка с детьми, без «смотрим в камеру и улыбаемся». Живые кадры, которые хочется печатать.</p></div><div class="t">1–2 часа</div></div>
+    <div class="row"><div><h3>Контент для блога и бизнеса</h3><p>Серия кадров под ваш профиль: портреты, процесс работы, детали. Хватает на несколько месяцев публикаций.</p></div><div class="t">2 часа</div></div>
+    <div class="row"><div><h3>Уличная и свадебная</h3><p>Город, набережная Волги, парки. Прогулка вдвоём или ваш свадебный день.</p></div><div class="t">от 2 часов</div></div>
+    <div class="row"><div><h3>Крещение</h3><p>Деликатная съёмка таинства в храме и семейные кадры после.</p></div><div class="t">1–1,5 часа</div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap pack">
+  <div>
+    <p class="eyebrow">Съёмка «всё включено»</p>
+    <h2>Вам нужно только прийти</h2>
+    <p style="color:var(--muted);max-width:46ch;margin:0">Самый популярный формат. Всё организую сама, вы приходите в назначенное время и получаете готовые фотографии.</p>
+  </div>
+  <ul>
+    <li><span class="tick">✓</span><div><b>Студия или локация</b><span>Подбираю под вашу идею и сезон</span></div></li>
+    <li><span class="tick">✓</span><div><b>Образ и визаж</b><span>Помогаю собрать образ, договариваюсь с визажистом</span></div></li>
+    <li><span class="tick">✓</span><div><b>Съёмка с подсказками</b><span>Показываю позы, вам не нужно уметь позировать</span></div></li>
+    <li><span class="tick">✓</span><div><b>Обработанные фото</b><span>Готовые кадры в онлайн-галерее</span></div></li>
+  </ul>
+</div></section>
+
+<section id="days"><div class="wrap">
+  <p class="eyebrow">Фотодни</p>
+  <h2>Короткие съёмки в готовой локации</h2>
+  <div class="days">
+    <div class="day"><div class="d">Новогодний фотодень</div><p>Декор уже готов. 20–30 минут съёмки, удобно с детьми.</p></div>
+    <div class="day"><div class="d">Семейный фотодень</div><p>Мини-съёмка для всей семьи по фиксированной цене.</p></div>
+    <div class="day"><div class="d">Ваша идея</div><p>Следите за анонсами, даты и места появляются здесь и в Instagram.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">Как проходит</p>
+  <h2>От заявки до готовых фото</h2>
+  <div class="steps">
+    <div class="step"><b>Пишете мне</b><p>Рассказываете, какая съёмка нужна и на какую дату.</p></div>
+    <div class="step"><b>Обсуждаем идею</b><p>Подбираем локацию, образ и время.</p></div>
+    <div class="step"><b>Снимаем</b><p>Подсказываю каждое движение, всё спокойно и без спешки.</p></div>
+    <div class="step"><b>Получаете фото</b><p>Обработанные кадры в галерее, их удобно скачать и отправить родным.</p></div>
+  </div>
+</div></section>
+
+<div class="contact"><div class="wrap">
+  <div><h2>Запишитесь на съёмку</h2><p>Отвечаю в Instagram и Telegram, обычно в течение дня.</p></div>
+  <a class="btn" href="https://www.instagram.com/photo_by_zimina/" target="_blank" rel="noopener">Написать Евгении</a>
+</div></div>
+
+<footer><div class="wrap">Евгения Зимина · фотограф в Саратове · @photo_by_zimina</div></footer>
+</body>
+</html>
