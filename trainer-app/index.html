@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F2F2F7">
+<title>Ваше имя — тренер</title>
+<meta name="description" content="Персональный тренер. Сайт, который работает как приложение: программы, тарифы и запись в Direct.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F2F7;
+  --card:#FFFFFF;
+  --label:#000000;
+  --sec:#8E8E93;
+  --sep:#E5E5EA;
+  --lav:#7B68EE;
+  --lav-deep:#5F4BD8;
+  --lav-soft:#EEEBFF;
+  --lav-mid:#B9AEFA;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",Inter,system-ui,sans-serif;
+  --s:1;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:var(--font);color:var(--label);background:#EFEDF8;-webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--lav);outline-offset:2px;border-radius:8px}
+
+/* ---------- desktop stage ---------- */
+.stage{position:relative;height:100%;display:grid;grid-template-columns:minmax(0,300px) auto minmax(0,300px);justify-content:center;align-items:center;gap:44px;padding:12px 32px;overflow:hidden}
+.stage::before{content:"";position:absolute;width:900px;height:900px;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(123,104,238,.28),rgba(123,104,238,0));pointer-events:none}
+.side{position:relative;max-width:340px}
+.side.l{justify-self:end;text-align:right}
+.side h1{font-size:56px;line-height:1;font-weight:800;letter-spacing:-.035em}
+.side .role{font-size:20px;color:#5c5c66;margin-top:12px}
+.side p{font-size:16px;line-height:1.5;color:#5c5c66;margin-top:18px}
+.side .tip{display:flex;gap:12px;align-items:flex-start;margin-top:22px;font-size:15px;line-height:1.45;color:#3a3a40}
+.side .tip svg{flex:none;margin-top:2px}
+.dl{display:inline-flex;align-items:center;gap:10px;margin-top:28px;background:#000;color:#fff;padding:14px 22px;border-radius:14px;font-weight:600;font-size:15px;transition:transform .2s}
+.dl:hover{transform:translateY(-2px)}
+.credit{margin-top:36px;font-size:12px;color:#8a8a96}
+
+.device-wrap{position:relative;width:calc(414px*var(--s));height:calc(868px*var(--s))}
+.device{position:absolute;left:0;top:0;width:414px;height:868px;transform:scale(var(--s));transform-origin:0 0;border-radius:66px;background:#1b1b1f;padding:12px;box-shadow:0 0 0 2px #3a3a40 inset,0 50px 100px -30px rgba(60,40,140,.45),0 20px 40px -20px rgba(0,0,0,.4)}
+.device::before{content:"";position:absolute;right:-3px;top:190px;width:4px;height:90px;border-radius:2px;background:#2a2a30}
+.device::after{content:"";position:absolute;left:-3px;top:160px;width:4px;height:60px;border-radius:2px;background:#2a2a30;box-shadow:0 80px 0 #2a2a30}
+
+/* ---------- app ---------- */
+.app{position:relative;width:390px;height:844px;border-radius:54px;overflow:hidden;background:var(--bg);isolation:isolate}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:124px;height:36px;border-radius:20px;background:#000;z-index:60}
+.status{position:absolute;top:0;left:0;right:0;height:54px;display:flex;justify-content:space-between;align-items:center;padding:4px 34px 0 46px;font-size:16px;font-weight:600;z-index:55;pointer-events:none}
+.status .ic{display:flex;gap:6px;align-items:center}
+
+.screens{position:absolute;inset:0}
+.screen{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding:54px 0 110px;opacity:0;visibility:hidden;transform:scale(.985);transition:opacity .28s ease,transform .28s ease,visibility 0s .28s;scrollbar-width:none;overscroll-behavior:contain}
+.screen::-webkit-scrollbar{display:none}
+.screen.active{opacity:1;visibility:visible;transform:none;transition:opacity .28s ease,transform .28s ease}
+
+/* nav bar with collapsing large title */
+.nav{position:sticky;top:-54px;z-index:5;height:98px;margin-top:-54px;padding-top:54px;display:flex;align-items:center;justify-content:center;background:transparent;transition:background .2s;pointer-events:none}
+.nav span{font-size:17px;font-weight:600;opacity:0;transition:opacity .2s}
+.screen.scrolled .nav{background:rgba(242,242,247,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 .5px 0 rgba(0,0,0,.18)}
+.screen.scrolled .nav span{opacity:1}
+.large{display:flex;justify-content:space-between;align-items:flex-end;padding:2px 20px 10px}
+.large h2{font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.large small{display:block;font-size:13px;font-weight:600;color:var(--sec);text-transform:uppercase;letter-spacing:.02em;margin-bottom:2px}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,var(--lav-mid),var(--lav));color:#fff;font-size:14px;font-weight:700;display:grid;place-items:center}
+
+.pad{padding:0 16px}
+.sec-title{font-size:22px;font-weight:700;letter-spacing:-.01em;margin:28px 20px 10px}
+.foot{font-size:13px;color:var(--sec);padding:8px 32px 0;line-height:1.4}
+
+/* cards & lists */
+.hero-card{margin:6px 16px 0;border-radius:24px;padding:22px 20px 20px;color:#fff;background:linear-gradient(150deg,#A99BFB 0%,#7B68EE 55%,#5F4BD8 100%);position:relative;overflow:hidden}
+.hero-card::after{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;border:28px solid rgba(255,255,255,.14)}
+.hero-card p.t{font-size:13px;font-weight:600;opacity:.85}
+.hero-card h3{font-size:26px;line-height:1.12;font-weight:700;letter-spacing:-.02em;margin:6px 0 16px;max-width:12em;position:relative}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#fff;color:var(--lav-deep);font-weight:600;font-size:15px;padding:11px 18px;border-radius:999px;position:relative}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 16px 0}
+.tile{background:var(--card);border-radius:20px;padding:14px 16px 16px}
+.tile .k{font-size:13px;font-weight:600;color:var(--sec);display:flex;align-items:center;gap:6px}
+.tile .v{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-top:6px;line-height:1}
+.tile .v small{font-size:15px;font-weight:600;color:var(--sec);margin-left:3px}
+
+.group{background:var(--card);border-radius:14px;margin:0 16px;overflow:hidden}
+.cell{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:10px 16px;text-align:left;position:relative}
+.cell+.cell::before,.cell+details::before,details+details::before,details+.cell::before{content:"";position:absolute;top:0;left:16px;right:0;height:.5px;background:var(--sep)}
+.group .with-ic+.with-ic::before{left:62px}
+.cell:active{background:#E5E5EA}
+.cell .main{flex:1;min-width:0}
+.cell .main b{display:block;font-weight:500;font-size:17px}
+.cell .main span{display:block;font-size:14px;color:var(--sec);margin-top:1px}
+.cell .val{color:var(--sec);font-size:16px}
+.chev{flex:none;color:#C4C4C7}
+.ic-tile{flex:none;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;color:#fff}
+
+/* slots */
+.slots{display:flex;gap:10px;overflow-x:auto;padding:0 16px 4px;scrollbar-width:none}
+.slots::-webkit-scrollbar{display:none}
+.slot{flex:none;background:var(--card);border-radius:16px;padding:12px 16px;text-align:left;min-width:112px;border:2px solid transparent;transition:border-color .2s,background .2s}
+.slot b{display:block;font-size:20px;font-weight:700}
+.slot span{font-size:13px;color:var(--sec)}
+.slot[aria-pressed=true]{border-color:var(--lav);background:var(--lav-soft)}
+.cta{display:flex;align-items:center;justify-content:center;width:calc(100% - 32px);margin:14px 16px 0;height:52px;border-radius:14px;background:var(--lav-deep);color:#fff;font-size:17px;font-weight:600;transition:opacity .2s,transform .1s}
+.cta:active{transform:scale(.98)}
+.cta[disabled]{opacity:.4;cursor:default}
+
+/* push detail */
+.stackwrap{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.stackwrap .screen{transition:opacity .28s ease,transform .38s cubic-bezier(.3,.8,.2,1),visibility 0s .38s}
+.stackwrap .screen.active{pointer-events:auto;transition:opacity .28s ease,transform .38s cubic-bezier(.3,.8,.2,1),visibility 0s}
+.detail{background:var(--bg);transform:translateX(100%)!important;opacity:1!important;visibility:hidden;z-index:3;box-shadow:-10px 0 30px rgba(0,0,0,.08)}
+.stackwrap.pushed .detail{transform:none!important;visibility:visible;transition:transform .38s cubic-bezier(.3,.8,.2,1),visibility 0s}
+.stackwrap.pushed .list{transform:translateX(-28%)!important}
+.back{position:sticky;top:0;z-index:6;height:44px;margin:0 0 0;display:flex;align-items:center;gap:2px;padding:0 10px;color:var(--lav-deep);font-size:17px}
+.prog-head{margin:4px 16px 0;border-radius:24px;padding:20px;color:#fff;min-height:170px;display:flex;flex-direction:column;justify-content:flex-end}
+.prog-head h3{font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1.08}
+.prog-head p{font-size:15px;opacity:.9;margin-top:6px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 16px 0}
+.chips span{background:var(--card);border-radius:999px;padding:7px 12px;font-size:14px;font-weight:500}
+.body{font-size:16px;line-height:1.5;margin:16px 20px 0;color:#3a3a3c}
+
+/* plans */
+.segm{display:flex;background:#E3E3E8;border-radius:10px;padding:2px;margin:4px 16px 16px;position:relative}
+.segm button{flex:1;height:32px;font-size:14px;font-weight:600;border-radius:8px;position:relative;z-index:1;transition:color .2s}
+.segm .thumb{position:absolute;top:2px;bottom:2px;left:2px;width:calc(50% - 2px);background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.12);transition:transform .3s cubic-bezier(.3,.8,.2,1)}
+.segm.right .thumb{transform:translateX(100%)}
+.plans{display:grid;gap:12px;margin:0 16px}
+.plan{display:block;width:100%;text-align:left;background:var(--card);border-radius:20px;padding:16px 16px 16px 18px;border:2px solid transparent;transition:border-color .2s}
+.plan[aria-checked=true]{border-color:var(--lav)}
+.plan .top{display:flex;justify-content:space-between;align-items:center}
+.plan .name{font-size:19px;font-weight:700}
+.plan .radio{width:24px;height:24px;border-radius:50%;border:2px solid #C7C7CC;display:grid;place-items:center;transition:all .2s}
+.plan[aria-checked=true] .radio{border-color:var(--lav);background:var(--lav)}
+.plan .radio svg{opacity:0;transition:opacity .2s}
+.plan[aria-checked=true] .radio svg{opacity:1}
+.plan .freq{font-size:14px;color:var(--sec);margin-top:2px}
+.plan .price{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:10px}
+.plan .price small{font-size:15px;color:var(--sec);font-weight:500}
+.plan ul{list-style:none;margin-top:10px;display:grid;gap:5px;font-size:15px;color:#3a3a3c}
+.plan li{display:flex;gap:8px;align-items:flex-start}
+.plan li svg{flex:none;margin-top:3px;color:var(--lav)}
+.badge{display:inline-block;font-size:12px;font-weight:600;color:var(--lav-deep);background:var(--lav-soft);padding:3px 8px;border-radius:6px;margin-left:8px;vertical-align:3px}
+
+/* trainer profile */
+.profile{text-align:center;padding:4px 20px 0}
+.big-ava{width:112px;height:112px;margin:0 auto;border-radius:50%;background:linear-gradient(140deg,var(--lav-mid),var(--lav-deep));display:grid;place-items:center;color:#fff;font-size:40px;font-weight:700;letter-spacing:-.02em;box-shadow:0 0 0 4px #fff,0 10px 30px -8px rgba(95,75,216,.6)}
+.profile h3{font-size:26px;font-weight:700;margin-top:14px;letter-spacing:-.02em}
+.profile p{color:var(--sec);font-size:15px;margin-top:2px}
+.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 16px 0}
+.actions a,.actions button{background:var(--card);border-radius:14px;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--lav-deep)}
+details summary{list-style:none;cursor:pointer}
+details summary::-webkit-details-marker{display:none}
+details{position:relative}
+details .chev{transition:transform .25s}
+details[open] .chev{transform:rotate(90deg)}
+details p{padding:0 16px 14px;font-size:15px;line-height:1.45;color:#3a3a3c}
+
+/* tab bar */
+.tabbar{position:absolute;left:0;right:0;bottom:0;height:86px;padding:6px 6px 0;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(249,249,251,.84);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 -.5px 0 rgba(0,0,0,.2);z-index:40}
+.tabbar button{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:500;color:#99999E;padding-top:4px;transition:color .2s}
+.tabbar button[aria-selected=true]{color:var(--lav-deep)}
+.tabbar button svg{transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.tabbar button[aria-selected=true] svg{transform:scale(1.08)}
+.home-ind{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:#000;z-index:70}
+
+/* sheet */
+.backdrop{position:absolute;inset:0;background:rgba(0,0,0,.35);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s;z-index:80}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--bg);border-radius:14px 14px 0 0;padding:8px 0 40px;transform:translateY(105%);transition:transform .42s cubic-bezier(.3,.9,.2,1);z-index:90;max-height:88%;overflow-y:auto}
+.app.sheet-open .backdrop{opacity:1;visibility:visible;transition:opacity .3s}
+.app.sheet-open .sheet{transform:none}
+.grabber{width:36px;height:5px;border-radius:3px;background:#C7C7CC;margin:0 auto 10px}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;padding:0 16px 14px}
+.sheet-head h3{font-size:20px;font-weight:700}
+.sheet-head button{color:var(--lav-deep);font-size:17px}
+.sheet .note{font-size:13px;color:var(--sec);padding:10px 32px 0;line-height:1.4}
+
+/* banner notification */
+.banner{position:absolute;top:10px;left:10px;right:10px;z-index:100;background:rgba(250,250,252,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:22px;padding:12px 14px;display:flex;gap:12px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.18);transform:translateY(-130%);transition:transform .45s cubic-bezier(.3,1.3,.5,1)}
+.banner.show{transform:none}
+.banner .bi{width:38px;height:38px;border-radius:10px;background:linear-gradient(140deg,var(--lav-mid),var(--lav-deep));flex:none;display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px}
+.banner b{display:block;font-size:15px}
+.banner span{font-size:14px;color:#3a3a3c}
+
+/* ---------- responsive ---------- */
+@media (max-width:1060px){
+  .stage{grid-template-columns:1fr;justify-items:center}
+  .side{display:none}
+}
+@media (max-width:600px){
+  body{background:var(--bg);overflow:hidden}
+  .stage{padding:0;display:block}
+  .stage::before,.credit{display:none}
+  .device-wrap{width:100%;height:100%}
+  .device{position:static;width:100%;height:100%;transform:none;border-radius:0;padding:0;background:none;box-shadow:none}
+  .device::before,.device::after{display:none}
+  .app{width:100%;height:100%;border-radius:0}
+  .island,.status,.home-ind{display:none}
+  .screen{padding-top:env(safe-area-inset-top,0)}
+  .nav{top:0;margin-top:0;padding-top:0;height:44px}
+  .screen .large{padding-top:12px}
+  .back{top:0}
+  .tabbar{height:calc(56px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0)}
+  .screen{padding-bottom:96px}
+  .banner{top:calc(env(safe-area-inset-top,0px) + 8px)}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <aside class="side l">
+    <h1>Ваше имя</h1>
+    <p class="role">Персональный тренер</p>
+    <p>Программы, тарифы и запись. Всё в одном приложении, которое открывается прямо в браузере.</p>
+  </aside>
+
+  <div class="device-wrap">
+    <div class="device">
+      <div class="app" id="app">
+        <div class="island" aria-hidden="true"></div>
+        <div class="status" aria-hidden="true">
+          <span id="clock">9:41</span>
+          <span class="ic">
+            <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="#000"/><rect x="5" y="5.5" width="3" height="6.5" rx="1" fill="#000"/><rect x="10" y="3" width="3" height="9" rx="1" fill="#000"/><rect x="15" y="0" width="3" height="12" rx="1" fill="#000"/></svg>
+            <svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 2.6c2.2 0 4.2.8 5.7 2.2l1.1-1.2A10 10 0 0 0 8 1 10 10 0 0 0 1.2 3.6l1.1 1.2A8.3 8.3 0 0 1 8 2.6Zm0 3.3c1.3 0 2.5.5 3.4 1.3l1.1-1.2A6.6 6.6 0 0 0 8 4.3a6.6 6.6 0 0 0-4.5 1.7l1.1 1.2c.9-.8 2.1-1.3 3.4-1.3Zm0 3.3c.5 0 1 .2 1.3.5L8 11 6.7 9.7c.3-.3.8-.5 1.3-.5Z" fill="#000"/></svg>
+            <svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.5" stroke="#000" opacity=".4" fill="none"/><rect x="2" y="2" width="18" height="9" rx="2" fill="#000"/><path d="M25 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="#000" opacity=".4"/></svg>
+          </span>
+        </div>
+
+        <div class="screens">
+          <!-- TODAY -->
+          <section class="screen active" id="s-today" aria-label="Сегодня">
+            <div class="nav"><span>Сегодня</span></div>
+            <div class="large">
+              <div><small id="dateLabel">Среда, 28 октября</small><h2>Сегодня</h2></div>
+              <button class="avatar" data-go="trainer" aria-label="Профиль тренера">ВИ</button>
+            </div>
+
+            <div class="hero-card">
+              <p class="t">Персональные тренировки</p>
+              <h3>Сильное тело без случайных упражнений</h3>
+              <button class="pill" data-go="programs">Выбрать программу</button>
+            </div>
+
+            <div class="tiles">
+              <div class="tile"><div class="k">Опыт</div><div class="v">8<small>лет</small></div></div>
+              <div class="tile"><div class="k">Клиенток</div><div class="v">300+</div></div>
+              <div class="tile"><div class="k">Тренировка</div><div class="v">60<small>мин</small></div></div>
+              <div class="tile"><div class="k">Формат</div><div class="v" style="font-size:22px;margin-top:10px">Зал и онлайн</div></div>
+            </div>
+
+            <h3 class="sec-title">Свободные окна</h3>
+            <div class="slots" id="slots" role="group" aria-label="Свободное время"></div>
+            <button class="cta" id="bookSlot" disabled>Выберите время</button>
+            <p class="foot">Окна для примера. Тренер покажет реальное расписание в переписке.</p>
+          </section>
+
+          <!-- PROGRAMS (stack) -->
+          <div class="stackwrap" id="stack">
+            <section class="screen list" id="s-programs" aria-label="Программы">
+              <div class="nav"><span>Программы</span></div>
+              <div class="large"><h2>Программы</h2></div>
+              <p class="foot" style="padding:0 20px 14px">Каждая программа подстраивается под ваш уровень на первой тренировке.</p>
+              <div class="group" id="progList"></div>
+              <h3 class="sec-title">Не знаете, что выбрать?</h3>
+              <div class="group">
+                <button class="cell" id="askProgram"><div class="main"><b>Спросить тренера</b><span>Опишите цель, программу подберём вместе</span></div><svg class="chev" width="8" height="14" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </section>
+            <section class="screen detail" id="s-detail" aria-label="Программа">
+              <button class="back" id="backBtn"><svg width="12" height="20" viewBox="0 0 12 20"><path d="M10 2 2 10l8 8" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Программы</button>
+              <div id="detailBody"></div>
+            </section>
+          </div>
+
+          <!-- PLANS -->
+          <section class="screen" id="s-plans" aria-label="Тарифы">
+            <div class="nav"><span>Тарифы</span></div>
+            <div class="large"><h2>Тарифы</h2></div>
+            <div class="segm" id="mode" role="tablist">
+              <span class="thumb"></span>
+              <button role="tab" aria-selected="true" data-mode="gym">В зале</button>
+              <button role="tab" aria-selected="false" data-mode="online">Онлайн</button>
+            </div>
+            <div class="plans" id="plans" role="radiogroup" aria-label="Тариф"></div>
+            <button class="cta" id="bookPlan">Выбрать</button>
+            <p class="foot">Цены примерные. Тренер подставит свои.</p>
+          </section>
+
+          <!-- TRAINER -->
+          <section class="screen" id="s-trainer" aria-label="Тренер">
+            <div class="nav"><span>Ваше имя</span></div>
+            <div class="profile" style="padding-top:18px">
+              <div class="big-ava">ВИ</div>
+              <h3>Ваше имя</h3>
+              <p>Персональный тренер · Ваш город</p>
+            </div>
+            <div class="actions">
+              <a class="js-ig" href="#" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.3A8.5 8.5 0 1 1 21 12Z"/></svg>Написать</a>
+              <a class="js-ig" href="#" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
+              <button data-go="plans"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="15" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Записаться</button>
+            </div>
+
+            <h3 class="sec-title">Обо мне</h3>
+            <div class="group"><p class="body" style="margin:0;padding:14px 16px">Помогаю женщинам стать сильнее и полюбить тренировки. Строю программу под вашу цель, уровень и график, ставлю технику и повышаю нагрузку постепенно, чтобы результат оставался надолго.</p></div>
+
+            <h3 class="sec-title">Вопросы</h3>
+            <div class="group" id="faq"></div>
+
+            <p class="foot" style="text-align:center;padding:28px 20px 0">design by youngmoneybae</p>
+          </section>
+        </div>
+
+        <nav class="tabbar" role="tablist" aria-label="Разделы">
+          <button role="tab" aria-selected="true" data-tab="today"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/></svg>Сегодня</button>
+          <button role="tab" aria-selected="false" data-tab="programs"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6.5 7v10M3.5 9.5v5M17.5 7v10M20.5 9.5v5M6.5 12h11"/></svg>Программы</button>
+          <button role="tab" aria-selected="false" data-tab="plans"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 15h4" stroke-linecap="round"/></svg>Тарифы</button>
+          <button role="tab" aria-selected="false" data-tab="trainer"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.8-3.6 3.9-5.5 7.5-5.5s6.7 1.9 7.5 5.5"/></svg>Тренер</button>
+        </nav>
+
+        <div class="backdrop" id="backdrop"></div>
+        <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Запись">
+          <div class="grabber"></div>
+          <div class="sheet-head"><h3>Запись</h3><button id="closeSheet">Готово</button></div>
+          <div class="group" id="sheetRows"></div>
+          <button class="cta" id="sendDirect">Отправить в Direct</button>
+          <p class="note">Текст записи скопируется. Откроется Direct, останется вставить и отправить.</p>
+        </div>
+
+        <div class="banner" id="banner" role="status" aria-live="polite"><div class="bi">ВИ</div><div><b id="bannerTitle"></b><span id="bannerText"></span></div></div>
+        <div class="home-ind" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="side r">
+    <div class="tip"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5F4BD8" stroke-width="2" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="3"/></svg>Нажимайте вкладки внизу экрана. Это работает как настоящее приложение.</div>
+    <div class="tip"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5F4BD8" stroke-width="2" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>С телефона сайт открывается на весь экран, без рамки.</div>
+    <a class="dl js-ig" href="#" target="_blank" rel="noopener">Написать в Direct</a>
+    <p class="credit">design by youngmoneybae</p>
+  </aside>
+</div>
+
+<script>
+/* Замените на профиль тренера */
+var IG = 'https://www.instagram.com/';
+document.querySelectorAll('.js-ig').forEach(function(a){ a.href = IG; });
+
+var app = document.getElementById('app');
+
+/* ---------- scale phone to window ---------- */
+function fit(){
+  var s = Math.min(1.12, (window.innerHeight - 24) / 868, (window.innerWidth - 32) / 414);
+  document.documentElement.style.setProperty('--s', Math.max(.5, s).toFixed(3));
+}
+fit(); window.addEventListener('resize', fit);
+
+/* колесо мыши в любом месте страницы прокручивает экран приложения */
+document.querySelector('.stage').addEventListener('wheel', function(e){
+  if(app.contains(e.target) || app.classList.contains('sheet-open')) return;
+  var pushed = stack.classList.contains('pushed') && document.querySelector('.tabbar button[data-tab=programs]').getAttribute('aria-selected') === 'true';
+  var scr = pushed ? document.getElementById('s-detail') : document.querySelector('.screen.active');
+  if(scr){ e.preventDefault(); scr.scrollBy({top:e.deltaY}); }
+}, {passive:false});
+
+/* ---------- clock & date ---------- */
+var WD = ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
+var WDS = ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'];
+var MO = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+function tick(){
+  var d = new Date();
+  document.getElementById('clock').textContent = d.getHours() + ':' + String(d.getMinutes()).padStart(2,'0');
+}
+tick(); setInterval(tick, 20000);
+var now = new Date();
+document.getElementById('dateLabel').textContent = WD[now.getDay()] + ', ' + now.getDate() + ' ' + MO[now.getMonth()];
+
+/* ---------- banner ---------- */
+var bannerT;
+function banner(title, text){
+  document.getElementById('bannerTitle').textContent = title;
+  document.getElementById('bannerText').textContent = text;
+  var b = document.getElementById('banner'); b.classList.add('show');
+  clearTimeout(bannerT); bannerT = setTimeout(function(){ b.classList.remove('show'); }, 3600);
+}
+
+/* ---------- tabs ---------- */
+var SCREENS = { today:'s-today', programs:'s-programs', plans:'s-plans', trainer:'s-trainer' };
+var stack = document.getElementById('stack');
+function go(tab){
+  document.querySelectorAll('.tabbar button').forEach(function(b){ b.setAttribute('aria-selected', b.dataset.tab === tab); });
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
+  if(tab !== 'programs') stack.classList.remove('pushed');
+  var el = document.getElementById(SCREENS[tab]); el.classList.add('active');
+  if(tab === 'programs' && stack.classList.contains('pushed')) document.getElementById('s-detail').classList.add('active');
+}
+document.querySelectorAll('.tabbar button').forEach(function(b){
+  b.addEventListener('click', function(){
+    if(b.getAttribute('aria-selected') === 'true'){
+      if(b.dataset.tab === 'programs' && stack.classList.contains('pushed')) pop();
+      else document.getElementById(SCREENS[b.dataset.tab]).scrollTo({top:0, behavior:'smooth'});
+      return;
+    }
+    go(b.dataset.tab);
+  });
+});
+document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click', function(){ go(b.dataset.go); }); });
+
+/* collapsing large titles */
+document.querySelectorAll('.screen').forEach(function(s){
+  s.addEventListener('scroll', function(){ s.classList.toggle('scrolled', s.scrollTop > 30); }, {passive:true});
+});
+
+/* ---------- booking state ---------- */
+var booking = { slot:null, program:null, plan:null };
+
+/* ---------- slots ---------- */
+var slotsEl = document.getElementById('slots'), bookSlot = document.getElementById('bookSlot');
+var SLOT_TIMES = [['19:00',0],['7:30',1],['13:00',1],['18:30',2],['11:00',3]];
+SLOT_TIMES.forEach(function(st){
+  var d = new Date(); d.setDate(d.getDate() + st[1]);
+  var day = st[1] === 0 ? 'Сегодня' : (st[1] === 1 ? 'Завтра' : WDS[d.getDay()] + ', ' + d.getDate() + ' ' + MO[d.getMonth()].slice(0,3));
+  var b = document.createElement('button'); b.className = 'slot'; b.type = 'button';
+  b.setAttribute('aria-pressed','false');
+  b.innerHTML = '<b>' + st[0] + '</b><span>' + day + '</span>';
+  b.onclick = function(){
+    slotsEl.querySelectorAll('.slot').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+    b.setAttribute('aria-pressed','true');
+    booking.slot = day + ', ' + st[0];
+    bookSlot.disabled = false; bookSlot.textContent = 'Записаться на ' + st[0];
+  };
+  slotsEl.appendChild(b);
+});
+bookSlot.onclick = openSheet;
+
+/* ---------- programs ---------- */
+var CHEV = '<svg class="chev" width="8" height="14" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var CHECK = '<svg width="14" height="14" viewBox="0 0 14 14"><path d="M2.5 7.5 5.5 10.5 11.5 3.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var PROGRAMS = [
+  {id:'glutes',name:'Ягодицы и ноги',sub:'8 недель · 3 раза в неделю',grad:'linear-gradient(150deg,#A99BFB,#6A55E0)',icon:'<path d="M6 8c0 6 2 9 6 9s6-3 6-9" />',
+   desc:'Самая популярная программа. Строим форму ягодиц базовыми упражнениями и изоляцией, нагрузку повышаем каждую неделю.',
+   chips:['8 недель','3 × 60 мин','Любой уровень'],
+   gets:['Округлая форма ягодиц','Сильные и подтянутые бёдра','Правильная техника приседа и тяги'],
+   week:[['Пн','Ягодичный мост, румынская тяга'],['Ср','Приседания, выпады, отведения'],['Пт','Становая на одной ноге, кардио']]},
+  {id:'posture',name:'Осанка и спина',sub:'6 недель · 2 раза в неделю',grad:'linear-gradient(150deg,#9FB4FF,#5B6CE8)',icon:'<path d="M12 4v16M8 8h8M9 13h6" />',
+   desc:'Для тех, кто много сидит. Укрепляем спину, раскрываем плечи и снимаем зажатость в шее.',
+   chips:['6 недель','2 × 60 мин','Подходит новичкам'],
+   gets:['Ровная осанка','Меньше напряжения в шее и пояснице','Сильная спина'],
+   week:[['Вт','Тяги, обратные разведения, мобильность'],['Чт','Гиперэкстензия, планки, растяжка']]},
+  {id:'shape',name:'Минус размер',sub:'10 недель · 3–4 раза в неделю',grad:'linear-gradient(150deg,#C7A6FF,#8B5CF6)',icon:'<path d="M5 12h3l2-5 4 10 2-5h3" />',
+   desc:'Силовые тренировки и кардио в одной системе плюс понятные рекомендации по питанию без жёстких диет.',
+   chips:['10 недель','3–4 × 60 мин','Средний уровень'],
+   gets:['Меньше объёмов','Больше энергии в течение дня','Привычка тренироваться'],
+   week:[['Пн','Всё тело, круговой формат'],['Ср','Ноги и ягодицы + 20 мин кардио'],['Пт','Верх тела + интервалы'],['Сб','Лёгкое кардио и растяжка']]},
+  {id:'start',name:'Первые шаги',sub:'4 недели · 2 раза в неделю',grad:'linear-gradient(150deg,#B4A8F0,#7C6FD6)',icon:'<path d="M7 18l3-6 4 3 3-8" />',
+   desc:'Если вы никогда не тренировались или был долгий перерыв. Учимся двигаться правильно и без страха.',
+   chips:['4 недели','2 × 50 мин','С нуля'],
+   gets:['Техника базовых упражнений','Уверенность в зале','Понимание, что делать дальше'],
+   week:[['Вт','Знакомство с базой, техника'],['Пт','Всё тело, лёгкий вес']]}
+];
+var progList = document.getElementById('progList');
+PROGRAMS.forEach(function(p){
+  var b = document.createElement('button'); b.className = 'cell with-ic'; b.type = 'button';
+  b.innerHTML = '<span class="ic-tile" style="background:' + p.grad + '"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' + p.icon + '</svg></span><div class="main"><b>' + p.name + '</b><span>' + p.sub + '</span></div>' + CHEV;
+  b.onclick = function(){ push(p); };
+  progList.appendChild(b);
+});
+function push(p){
+  var d = document.getElementById('s-detail');
+  document.getElementById('detailBody').innerHTML =
+    '<div class="prog-head" style="background:' + p.grad + '"><h3>' + p.name + '</h3><p>' + p.sub + '</p></div>' +
+    '<div class="chips">' + p.chips.map(function(c){ return '<span>' + c + '</span>'; }).join('') + '</div>' +
+    '<p class="body">' + p.desc + '</p>' +
+    '<h3 class="sec-title">Что вы получите</h3><div class="group">' + p.gets.map(function(g){ return '<div class="cell"><span style="color:var(--lav)">' + CHECK + '</span><div class="main"><b style="font-size:16px">' + g + '</b></div></div>'; }).join('') + '</div>' +
+    '<h3 class="sec-title">Пример недели</h3><div class="group">' + p.week.map(function(w){ return '<div class="cell"><div class="main"><b style="font-size:16px">' + w[1] + '</b></div><span class="val">' + w[0] + '</span></div>'; }).join('') + '</div>' +
+    '<button class="cta" id="takeProg">Хочу эту программу</button>';
+  d.scrollTop = 0; d.classList.add('active');
+  stack.classList.add('pushed');
+  document.getElementById('takeProg').onclick = function(){ booking.program = p.name; openSheet(); };
+}
+function pop(){
+  stack.classList.remove('pushed');
+  setTimeout(function(){ document.getElementById('s-detail').classList.remove('active'); }, 380);
+}
+document.getElementById('backBtn').onclick = pop;
+document.getElementById('askProgram').onclick = function(){ booking.program = 'Подобрать вместе с тренером'; openSheet(); };
+
+/* ---------- plans ---------- */
+var PLANS = {
+  gym:[
+    {name:'Старт',freq:'1–2 тренировки в неделю',price:'от 10 000 ₽',inc:['Персональная программа','Постановка техники','Рекомендации по питанию']},
+    {name:'Форма',freq:'3 тренировки в неделю',price:'27 000 ₽',hot:true,inc:['Всё из «Старт»','Замеры каждые 2 недели','Связь с тренером в переписке']},
+    {name:'Максимум',freq:'4–5 тренировок в неделю',price:'от 34 000 ₽',inc:['Всё из «Форма»','План питания на неделю','Приоритет в выборе времени']}
+  ],
+  online:[
+    {name:'Программа',freq:'Самостоятельно, по плану',price:'9 000 ₽',inc:['Программа на месяц','Видео упражнений','Ответы на вопросы раз в неделю']},
+    {name:'Ведение',freq:'План и контроль',price:'15 000 ₽',hot:true,inc:['Всё из «Программа»','Разбор видео вашей техники','Связь в переписке каждый день']},
+    {name:'Ведение+',freq:'Как в зале, но из дома',price:'22 000 ₽',inc:['Всё из «Ведение»','Еженедельный видеозвонок','План питания на неделю']}
+  ]
+};
+var mode = 'gym', planIdx = 1;
+var plansEl = document.getElementById('plans'), bookPlan = document.getElementById('bookPlan');
+function renderPlans(){
+  plansEl.innerHTML = '';
+  PLANS[mode].forEach(function(p, i){
+    var b = document.createElement('button'); b.className = 'plan'; b.type = 'button';
+    b.setAttribute('role','radio'); b.setAttribute('aria-checked', i === planIdx);
+    b.innerHTML = '<div class="top"><span class="name">' + p.name + (p.hot ? '<span class="badge">Популярный</span>' : '') + '</span><span class="radio"><svg width="12" height="12" viewBox="0 0 14 14" style="color:#fff">' + CHECK.replace(/<svg[^>]*>|<\/svg>/g,'') + '</svg></span></div>' +
+      '<div class="freq">' + p.freq + '</div><div class="price">' + p.price + ' <small>в месяц</small></div>' +
+      '<ul>' + p.inc.map(function(x){ return '<li>' + CHECK + x + '</li>'; }).join('') + '</ul>';
+    b.onclick = function(){ planIdx = i; renderPlans(); };
+    plansEl.appendChild(b);
+  });
+  var cur = PLANS[mode][planIdx];
+  bookPlan.textContent = 'Выбрать «' + cur.name + '» · ' + cur.price;
+}
+document.querySelectorAll('#mode button').forEach(function(b){
+  b.onclick = function(){
+    mode = b.dataset.mode;
+    document.getElementById('mode').classList.toggle('right', mode === 'online');
+    document.querySelectorAll('#mode button').forEach(function(x){ x.setAttribute('aria-selected', x === b); });
+    renderPlans();
+  };
+});
+renderPlans();
+bookPlan.onclick = function(){
+  var cur = PLANS[mode][planIdx];
+  booking.plan = cur.name + (mode === 'online' ? ' (онлайн)' : ' (зал)') + ', ' + cur.price;
+  openSheet();
+};
+
+/* ---------- FAQ ---------- */
+var FAQ = [
+  ['Я никогда не занималась. Мне подойдёт?','Да. Первая тренировка начинается с проверки уровня, и программа строится от того, где вы сейчас.'],
+  ['Где проходят тренировки?','В зале в центре города или онлайн. Адрес и как пройти пришлю после записи.'],
+  ['Нужно ли садиться на диету?','Нет. Вы получите понятные рекомендации по питанию без запретов и подсчёта каждой калории.'],
+  ['Что если пропущу тренировку?','Предупредите за 12 часов, и мы перенесём занятие. Тренировка не сгорает.'],
+  ['Как оплатить?','Переводом на карту или по ссылке. Абонемент начинает действовать с первой тренировки.']
+];
+document.getElementById('faq').innerHTML = FAQ.map(function(f){
+  return '<details><summary class="cell"><div class="main"><b style="font-size:16px">' + f[0] + '</b></div>' + CHEV + '</summary><p>' + f[1] + '</p></details>';
+}).join('');
+
+/* ---------- sheet ---------- */
+function rowsHTML(){
+  var rows = [['Время', booking.slot || 'Обсудим в переписке'], ['Программа', booking.program || 'Подберём вместе'], ['Тариф', booking.plan || 'Подберём вместе']];
+  return rows.map(function(r){ return '<div class="cell"><div class="main"><b style="font-size:16px">' + r[0] + '</b></div><span class="val" style="text-align:right;max-width:60%">' + r[1] + '</span></div>'; }).join('');
+}
+function openSheet(){
+  document.getElementById('sheetRows').innerHTML = rowsHTML();
+  app.classList.add('sheet-open');
+  setTimeout(function(){ document.getElementById('sendDirect').focus({preventScroll:true}); }, 300);
+}
+function closeSheet(){ app.classList.remove('sheet-open'); }
+document.getElementById('closeSheet').onclick = closeSheet;
+document.getElementById('backdrop').onclick = closeSheet;
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeSheet(); });
+document.getElementById('sendDirect').onclick = function(){
+  var msg = 'Здравствуйте! Хочу записаться на тренировки.\n' +
+    'Время: ' + (booking.slot || 'обсудим') + '\n' +
+    'Программа: ' + (booking.program || 'подберём вместе') + '\n' +
+    'Тариф: ' + (booking.plan || 'подберём вместе');
+  var done = function(ok){
+    closeSheet();
+    banner(ok ? 'Запись скопирована' : 'Почти готово', ok ? 'Вставьте её в сообщение в Direct' : 'Напишите в Direct, что вы выбрали');
+    window.open(IG, '_blank', 'noopener');
+  };
+  try{
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(msg).then(function(){ done(true); }, function(){ done(false); }); }
+    else done(false);
+  }catch(err){ done(false); }
+};
+
+/* welcome notification */
+setTimeout(function(){ banner('Ваше имя', 'Привет! Выберите программу или свободное время.'); }, 1200);
+</script>
+</body>
+</html>
